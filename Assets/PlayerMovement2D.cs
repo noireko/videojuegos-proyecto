@@ -6,7 +6,6 @@ public class PlayerMovement2D : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
-
     private Vector2 movement;
 
     void Start()
@@ -22,9 +21,9 @@ public class PlayerMovement2D : MonoBehaviour
 
         movement = movement.normalized;
 
-        bool isMoving = movement != Vector2.zero;
-
-        animator.SetBool("isMoving", isMoving);
+        animator.SetFloat("moveX", movement.x);
+        animator.SetFloat("moveY", movement.y);
+        animator.SetBool("isMoving", movement != Vector2.zero);
     }
 
     void FixedUpdate()
