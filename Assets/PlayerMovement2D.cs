@@ -16,20 +16,16 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        int x = (int)Input.GetAxisRaw("Horizontal");
+        int y = (int)Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(x, y).normalized;
 
         bool isMoving = movement != Vector2.zero;
 
         animator.SetBool("isMoving", isMoving);
-
-        if (isMoving)
-        {
-            animator.SetFloat("moveX", x);
-            animator.SetFloat("moveY", y);
-        }
+        animator.SetInteger("moveX", x);
+        animator.SetInteger("moveY", y);
     }
 
     void FixedUpdate()
