@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class arbol : MonoBehaviour, IInteractable
 {
-    [SerializeField] int maxHP = 3;
-    [SerializeField] GameObject woodDropPrefab;
+    [SerializeField] private int maxHP = 8;
+    [SerializeField] private GameObject woodDropPrefab;
+
+    [Header("Sprites de daño")]
+    [SerializeField] private Sprite[] damageSprites;
 
     private int currentHP;
     private SpriteRenderer spriteRenderer;
@@ -12,29 +15,58 @@ public class arbol : MonoBehaviour, IInteractable
     {
         currentHP = maxHP;
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        UpdateTreeSprite();
     }
 
-    void LateUpdate()
+    public string GetPrompt()
     {
-        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        return "Talar árbol";
     }
-
-    public string GetPrompt() => "Talar árbol";
 
     public void Interact()
     {
         currentHP--;
 
-        Debug.Log($"Arbol golpeado. HP: {currentHP}/{maxHP}");
+        Debug.Log($"Árbol golpeado. HP: {currentHP}/{maxHP}");
 
         if (currentHP <= 0)
+        {
             Derribar();
+            return;
+        }
+
+        UpdateTreeSprite();
     }
 
-    void Derribar()
+    private void UpdateTreeSprite()
+    {
+        if (damageSprites == null || damageSprites.Length == 0)
+            return;
+
+        int spriteIndex = Mathf.FloorToInt(
+            (1f - (float)currentHP / maxHP) * damageSprites.Length
+        );
+
+        spriteIndex = Mathf.Clamp(
+            spriteIndex,
+            0,
+            damageSprites.Length - 1
+        );
+
+        spriteRenderer.sprite = damageSprites[spriteIndex];
+    }
+
+    private void Derribar()
     {
         if (woodDropPrefab != null)
-            Instantiate(woodDropPrefab, transform.position, Quaternion.identity);
+        {
+            Instantiate(
+                woodDropPrefab,
+                transform.position,
+                Quaternion.identity
+            );
+        }
 
         Destroy(gameObject);
     }
