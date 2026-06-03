@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 491245849}
   - component: {fileID: 491245848}
   - component: {fileID: 491245847}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 28_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,10 +402,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1651429610}
   - component: {fileID: 1651429609}
-  - component: {fileID: 1651429608}
   - component: {fileID: 1651429612}
   - component: {fileID: 1651429611}
   - component: {fileID: 1651429613}
+  - component: {fileID: 1651429615}
+  - component: {fileID: 1651429614}
   m_Layer: 0
   m_Name: frame_0_delay-0.2s_0
   m_TagString: Untagged
@@ -413,22 +414,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1651429608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651429607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e58aa661d22f6a4ebce39a7219ba66c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement2D
-  interactRadius: 1.5
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &1651429609
 SpriteRenderer:
   serializedVersion: 2
@@ -598,6 +583,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1651429614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651429607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9d8bd2d808aa64d86e57c0e130664f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  speed: 5
+--- !u!114 &1651429615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651429607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e58aa661d22f6a4ebce39a7219ba66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
+  interactRadius: 1.5
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
