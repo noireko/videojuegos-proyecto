@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
+
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 movement;
@@ -16,18 +17,37 @@ public class PlayerMovement : MonoBehaviour
     private int prevX = 0;
     private int prevY = 0;
 
+    private bool isLocked = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
         animator.SetInteger("moveX", lastX);
         animator.SetInteger("moveY", lastY);
     }
 
+    public void SetLocked(bool locked)
+    {
+        isLocked = locked;
+
+        if (locked)
+        {
+            movement = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
+            animator.SetBool("isMoving", false);
+        }
+    }
+
     void Update()
     {
+        if (isLocked)
+            return;
+
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
+
         movement = new Vector2(x, y).normalized;
 
         if (x != 0 || y != 0)
@@ -46,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 lastX = x;
                 lastY = y;
+
                 animator.SetInteger("moveX", lastX);
                 animator.SetInteger("moveY", lastY);
             }
@@ -56,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             idleTimer -= Time.deltaTime;
+
             if (idleTimer <= 0f)
             {
                 animator.SetBool("isMoving", false);
@@ -68,6 +90,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isLocked)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         rb.linearVelocity = movement * speed;
     }
 }

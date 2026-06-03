@@ -6,6 +6,12 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] LayerMask interactableLayer;
 
     IInteractable currentTarget;
+    PlayerMovement playerMovement;
+
+    void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     void Update()
     {
@@ -15,7 +21,15 @@ public class PlayerInteraction : MonoBehaviour
         currentTarget = hit != null ? hit.GetComponent<IInteractable>() : null;
 
         if (Input.GetKeyDown(KeyCode.E) && currentTarget != null)
+        {
+            playerMovement.SetLocked(true);
             currentTarget.Interact();
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            playerMovement.SetLocked(false);
+        }
     }
 
     void OnDrawGizmosSelected()
