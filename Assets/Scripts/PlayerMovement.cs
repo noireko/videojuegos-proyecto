@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float idleDelay = 0.1f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -12,11 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private int lastX = 0;
     private int lastY = -1;
 
-    private float idleDelay = 0.1f;
     private float idleTimer = 0f;
-
-    private int prevX = 0;
-    private int prevY = 0;
 
     private bool isLocked = false;
 
@@ -52,29 +49,18 @@ public class PlayerMovement : MonoBehaviour
 
         movement = new Vector2(x, y).normalized;
 
-        if (x != 0 || y != 0)
+        bool isMoving = x != 0 || y != 0;
+
+        if (isMoving)
         {
-            bool isFullDiagonal = x != 0 && y != 0;
-            bool comingFromIdle = idleTimer <= 0f;
+            lastX = x;
+            lastY = y;
 
-            int prevComponents = (prevX != 0 ? 1 : 0) + (prevY != 0 ? 1 : 0);
-            int currComponents = (x != 0 ? 1 : 0) + (y != 0 ? 1 : 0);
-            bool addedKey = currComponents > prevComponents;
-
-            bool completeDirectionChange = (prevX != 0 || prevY != 0) &&
-                                           (x != prevX && y != prevY);
-
-            if (isFullDiagonal || comingFromIdle || addedKey || completeDirectionChange)
-            {
-                lastX = x;
-                lastY = y;
-
-                animator.SetInteger("moveX", lastX);
-                animator.SetInteger("moveY", lastY);
-            }
+            animator.SetInteger("moveX", lastX);
+            animator.SetInteger("moveY", lastY);
+            animator.SetBool("isMoving", true);
 
             idleTimer = idleDelay;
-            animator.SetBool("isMoving", true);
         }
         else
         {
@@ -85,9 +71,6 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isMoving", false);
             }
         }
-
-        prevX = x;
-        prevY = y;
     }
 
     void FixedUpdate()

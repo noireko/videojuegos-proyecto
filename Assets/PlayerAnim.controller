@@ -780,7 +780,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: hacha-arizq
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4042605310599197623}
@@ -809,6 +809,12 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isChopping
+    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: moveX
+    m_EventTreshold: 1
+  - m_ConditionMode: 6
+    m_ConditionEvent: moveY
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6803455790551762739}
@@ -1022,7 +1028,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: hacha-arder
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3448793052676226561}
@@ -1237,7 +1243,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: hacha-der
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4896267962346263683}
@@ -1345,7 +1351,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: hacha-izq
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2495798923193982070}
