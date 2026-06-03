@@ -21,9 +21,7 @@ public class PlayerMovement2D : MonoBehaviour
 
         movement = new Vector2(x, y).normalized;
 
-        bool isMoving = movement != Vector2.zero;
-
-        animator.SetBool("isMoving", isMoving);
+        animator.SetBool("isMoving", movement != Vector2.zero);
         animator.SetInteger("moveX", x);
         animator.SetInteger("moveY", y);
     }
