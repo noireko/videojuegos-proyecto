@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Vector2 movement;
 
     private int lastX = 0;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator.SetInteger("moveX", lastX);
         animator.SetInteger("moveY", lastY);
@@ -96,6 +98,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        rb.linearVelocity = movement * speed;
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    void LateUpdate()
+    {
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
     }
 }

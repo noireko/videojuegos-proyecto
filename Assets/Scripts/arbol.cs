@@ -5,15 +5,26 @@ public class arbol : MonoBehaviour, IInteractable
     [SerializeField] int maxHP = 3;
     [SerializeField] GameObject woodDropPrefab;
 
-    int currentHP;
+    private int currentHP;
+    private SpriteRenderer spriteRenderer;
 
-    void Start() => currentHP = maxHP;
+    void Start()
+    {
+        currentHP = maxHP;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void LateUpdate()
+    {
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+    }
 
     public string GetPrompt() => "Talar árbol";
 
     public void Interact()
     {
         currentHP--;
+
         Debug.Log($"Arbol golpeado. HP: {currentHP}/{maxHP}");
 
         if (currentHP <= 0)
