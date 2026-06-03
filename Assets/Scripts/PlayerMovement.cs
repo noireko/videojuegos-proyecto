@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private int lastX = 0;
     private int lastY = -1;
 
-    private float idleDelay = 0.1f;
-    private float idleTimer = 0f;
+   [SerializeField] private float idleDelay = 0.15f;
+[SerializeField] private float idleTimer = 0f;
 
     void Start()
     {
