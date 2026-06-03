@@ -22,36 +22,35 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
+{
+    int x = (int)Input.GetAxisRaw("Horizontal");
+    int y = (int)Input.GetAxisRaw("Vertical");
+
+    movement = new Vector2(x, y).normalized;
+
+    if (x != 0 || y != 0)
     {
-        int x = (int)Input.GetAxisRaw("Horizontal");
-        int y = (int)Input.GetAxisRaw("Vertical");
-        movement = new Vector2(x, y).normalized;
-
-        if (x != 0 || y != 0)
+        if (x != lastX || y != lastY)
         {
-            bool comingFromIdle = idleTimer <= 0f;
-            bool isFullDiagonal = x != 0 && y != 0;
-
-            if (isFullDiagonal || comingFromIdle)
-            {
-                lastX = x;
-                lastY = y;
-                animator.SetInteger("moveX", lastX);
-                animator.SetInteger("moveY", lastY);
-            }
-
-            idleTimer = idleDelay;
-            animator.SetBool("isMoving", true);
+            lastX = x;
+            lastY = y;
+            animator.SetInteger("moveX", lastX);
+            animator.SetInteger("moveY", lastY);
         }
-        else
+
+        idleTimer = idleDelay;
+        animator.SetBool("isMoving", true);
+    }
+    else
+    {
+        idleTimer -= Time.deltaTime;
+
+        if (idleTimer <= 0f)
         {
-            idleTimer -= Time.deltaTime;
-            if (idleTimer <= 0f)
-            {
-                animator.SetBool("isMoving", false);
-            }
+            animator.SetBool("isMoving", false);
         }
     }
+}
 
     void FixedUpdate()
     {
