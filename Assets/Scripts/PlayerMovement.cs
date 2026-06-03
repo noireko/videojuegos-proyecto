@@ -10,8 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private int lastX = 0;
     private int lastY = -1;
 
-   [SerializeField] private float idleDelay = 0.15f;
-[SerializeField] private float idleTimer = 0f;
+    private float idleDelay = 0.1f;
+    private float idleTimer = 0f;
+
+    private int prevX = 0;
+    private int prevY = 0;
 
     void Start()
     {
@@ -22,35 +25,46 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
-{
-    int x = (int)Input.GetAxisRaw("Horizontal");
-    int y = (int)Input.GetAxisRaw("Vertical");
-
-    movement = new Vector2(x, y).normalized;
-
-    if (x != 0 || y != 0)
     {
-        if (x != lastX || y != lastY)
+        int x = (int)Input.GetAxisRaw("Horizontal");
+        int y = (int)Input.GetAxisRaw("Vertical");
+        movement = new Vector2(x, y).normalized;
+
+        if (x != 0 || y != 0)
         {
-            lastX = x;
-            lastY = y;
-            animator.SetInteger("moveX", lastX);
-            animator.SetInteger("moveY", lastY);
+            bool isFullDiagonal = x != 0 && y != 0;
+            bool comingFromIdle = idleTimer <= 0f;
+
+            int prevComponents = (prevX != 0 ? 1 : 0) + (prevY != 0 ? 1 : 0);
+            int currComponents = (x != 0 ? 1 : 0) + (y != 0 ? 1 : 0);
+            bool addedKey = currComponents > prevComponents;
+
+            bool completeDirectionChange = (prevX != 0 || prevY != 0) &&
+                                           (x != prevX && y != prevY);
+
+            if (isFullDiagonal || comingFromIdle || addedKey || completeDirectionChange)
+            {
+                lastX = x;
+                lastY = y;
+                animator.SetInteger("moveX", lastX);
+                animator.SetInteger("moveY", lastY);
+            }
+
+            idleTimer = idleDelay;
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            idleTimer -= Time.deltaTime;
+            if (idleTimer <= 0f)
+            {
+                animator.SetBool("isMoving", false);
+            }
         }
 
-        idleTimer = idleDelay;
-        animator.SetBool("isMoving", true);
+        prevX = x;
+        prevY = y;
     }
-    else
-    {
-        idleTimer -= Time.deltaTime;
-
-        if (idleTimer <= 0f)
-        {
-            animator.SetBool("isMoving", false);
-        }
-    }
-}
 
     void FixedUpdate()
     {
