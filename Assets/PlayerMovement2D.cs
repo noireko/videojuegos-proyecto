@@ -14,17 +14,19 @@ public class PlayerMovement2D : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+   void Update()
+{
+    movement.x = Input.GetAxisRaw("Horizontal");
+    movement.y = Input.GetAxisRaw("Vertical");
 
-        movement = movement.normalized;
+    movement = movement.normalized;
 
-        animator.SetFloat("moveX", movement.x);
-        animator.SetFloat("moveY", movement.y);
-        animator.SetBool("isMoving", movement != Vector2.zero);
-    }
+    bool isMoving = movement != Vector2.zero;
+
+    animator.SetBool("isMoving", isMoving);
+    animator.SetFloat("moveX", Input.GetAxisRaw("Horizontal"));
+    animator.SetFloat("moveY", Input.GetAxisRaw("Vertical"));
+}
 
     void FixedUpdate()
     {
