@@ -61,11 +61,22 @@ public class arbol : MonoBehaviour, IInteractable
     {
         if (woodDropPrefab != null)
         {
-            Instantiate(
-                woodDropPrefab,
-                transform.position,
-                Quaternion.identity
-            );
+            int woodAmount = Random.Range(2, 4); // 2 o 3
+
+            for (int i = 0; i < woodAmount; i++)
+            {
+                Vector3 offset = new Vector3(
+                    Random.Range(-0.3f, 0.3f),
+                    Random.Range(-0.3f, 0.3f),
+                    0f
+                );
+
+                Instantiate(
+                    woodDropPrefab,
+                    transform.position + offset,
+                    Quaternion.identity
+                );
+            }
         }
 
         Destroy(gameObject);
