@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetInteger("moveX", lastX);
         animator.SetInteger("moveY", lastY);
+        animator.SetBool("isRunning", false);
     }
 
     public void SetLocked(bool locked)
@@ -40,8 +41,9 @@ public class PlayerMovement : MonoBehaviour
         {
             movement = Vector2.zero;
             rb.linearVelocity = Vector2.zero;
+
             animator.SetBool("isMoving", false);
-            animator.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift));
+            animator.SetBool("isRunning", false);
         }
     }
 
@@ -50,21 +52,17 @@ public class PlayerMovement : MonoBehaviour
         if (isLocked)
             return;
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            currentSpeed = runSpeed;
-        }
-        else
-        {
-            currentSpeed = walkSpeed;
-        }
-
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(x, y).normalized;
 
         bool isMoving = x != 0 || y != 0;
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving;
+
+        currentSpeed = isRunning ? runSpeed : walkSpeed;
+
+        animator.SetBool("isRunning", isRunning);
 
         if (isMoving)
         {
@@ -84,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             if (idleTimer <= 0f)
             {
                 animator.SetBool("isMoving", false);
+                animator.SetBool("isRunning", false);
             }
         }
     }
@@ -97,8 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.MovePosition(
-            rb.position +
-            movement * currentSpeed * Time.fixedDeltaTime
+            rb.position + movement * currentSpeed * Time.fixedDeltaTime
         );
     }
 
