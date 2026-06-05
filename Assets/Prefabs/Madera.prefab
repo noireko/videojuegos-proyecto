@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 535889336624186328}
   - component: {fileID: 8293559904958532057}
   - component: {fileID: 4020111376295328960}
+  - component: {fileID: 6298109044543513315}
   m_Layer: 0
   m_Name: Madera
   m_TagString: Untagged
@@ -159,3 +160,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   itemName: Wood
   amount: 1
+--- !u!114 &6298109044543513315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889616483443511316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
