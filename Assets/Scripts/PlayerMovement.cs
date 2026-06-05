@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float walkSpeed = 5f;
+    [SerializeField] private float runSpeed = 8f;
     [SerializeField] private float idleDelay = 0.1f;
+
+    private float currentSpeed;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -23,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        currentSpeed = walkSpeed;
+
         animator.SetInteger("moveX", lastX);
         animator.SetInteger("moveY", lastY);
     }
@@ -36,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
             movement = Vector2.zero;
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("isMoving", false);
+            animator.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift));
         }
     }
 
@@ -43,6 +49,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isLocked)
             return;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = runSpeed;
+        }
+        else
+        {
+            currentSpeed = walkSpeed;
+        }
 
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
@@ -81,11 +96,15 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        rb.MovePosition(
+            rb.position +
+            movement * currentSpeed * Time.fixedDeltaTime
+        );
     }
 
     void LateUpdate()
     {
-        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        spriteRenderer.sortingOrder =
+            Mathf.RoundToInt(transform.position.y * -100);
     }
 }

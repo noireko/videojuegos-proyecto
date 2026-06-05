@@ -2724,7 +2724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9d8bd2d808aa64d86e57c0e130664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 1.5
+  walkSpeed: 1.5
+  runSpeed: 3
   idleDelay: 0.1
 --- !u!114 &2011958057
 MonoBehaviour:
