@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 6430074}
   - component: {fileID: 6430073}
   - component: {fileID: 6430076}
+  - component: {fileID: 6430077}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -181,7 +182,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -256,6 +257,19 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &6430077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342d06b230d629f4096ed0526f46a696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  target: {fileID: 2011958062}
 --- !u!1 &21888902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,17 +1079,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.014733791, y: 0.3581661}
+  m_Offset: {x: -0.0101315975, y: -0.34516805}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    border: {x: 0, y: 0.07, z: 0, w: 0}
+    pivot: {x: 0.51851135, y: 0.29953068}
     oldSize: {x: 1.25, y: 2.17}
     newSize: {x: 1.25, y: 2.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3954792, y: 0.26451707}
+  m_Size: {x: 0.77201223, y: 0.5771102}
   m_EdgeRadius: 0
 --- !u!114 &837829715
 MonoBehaviour:
@@ -1090,7 +1104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::arbol
   maxHP: 10
-  woodDropPrefab: {fileID: 0}
+  woodDropPrefab: {fileID: 7889616483443511316, guid: 021f36e5ebbad81439d0fd4472869b5f, type: 3}
   damageSprites:
   - {fileID: 21300000, guid: 71430d6dddf3db64f87f98c016831924, type: 3}
   - {fileID: 21300000, guid: 30d88a71a3b0dc140bfad7ac0127bead, type: 3}
@@ -1163,8 +1177,8 @@ Transform:
   m_GameObject: {fileID: 837829712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.484975, y: 2.093941, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -7.484975, y: 2.1043, z: 0}
+  m_LocalScale: {x: 1, y: 0.9931, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1235,17 +1249,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.014733791, y: 0.3581661}
+  m_Offset: {x: -0.0072847307, y: -0.3078941}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    border: {x: 0, y: 0.099999994, z: 0, w: 0}
+    pivot: {x: 0.5185114, y: 0.2995307}
     oldSize: {x: 1.26, y: 2.17}
     newSize: {x: 1.26, y: 2.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3954792, y: 0.26451707}
+  m_Size: {x: 0.8248405, y: 0.5727763}
   m_EdgeRadius: 0
 --- !u!114 &973242900
 MonoBehaviour:
@@ -1260,7 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::arbol
   maxHP: 6
-  woodDropPrefab: {fileID: 0}
+  woodDropPrefab: {fileID: 7889616483443511316, guid: 021f36e5ebbad81439d0fd4472869b5f, type: 3}
   damageSprites:
   - {fileID: 21300000, guid: 30d88a71a3b0dc140bfad7ac0127bead, type: 3}
   - {fileID: 21300000, guid: 1d2eee950441c6c469865466da99748e, type: 3}
@@ -1599,17 +1613,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.014733791, y: 0.3581661}
+  m_Offset: {x: -0.023596287, y: -0.3077674}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    border: {x: 0, y: 0.14, z: 0, w: 0}
+    pivot: {x: 0.5185114, y: 0.2995307}
     oldSize: {x: 1.26, y: 2.17}
     newSize: {x: 1.26, y: 2.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3954792, y: 0.26451707}
+  m_Size: {x: 0.82137203, y: 0.5463686}
   m_EdgeRadius: 0
 --- !u!114 &1178034607
 MonoBehaviour:
@@ -1624,7 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::arbol
   maxHP: 2
-  woodDropPrefab: {fileID: 0}
+  woodDropPrefab: {fileID: 7889616483443511316, guid: 021f36e5ebbad81439d0fd4472869b5f, type: 3}
   damageSprites:
   - {fileID: 21300000, guid: 1d2eee950441c6c469865466da99748e, type: 3}
 --- !u!212 &1178034608
@@ -1767,17 +1781,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0011538565, y: 0.243482}
+  m_Offset: {x: -0.0066830814, y: -0.34709382}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    border: {x: 0, y: 0.07, z: 0, w: 0}
+    pivot: {x: 0.51851135, y: 0.29953068}
     oldSize: {x: 1.25, y: 2.17}
     newSize: {x: 1.25, y: 2.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.65261537, y: 0.71607137}
+  m_Size: {x: 0.74547714, y: 0.59137964}
   m_EdgeRadius: 0
 --- !u!114 &1287092678
 MonoBehaviour:
@@ -1792,7 +1806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::arbol
   maxHP: 8
-  woodDropPrefab: {fileID: 0}
+  woodDropPrefab: {fileID: 7889616483443511316, guid: 021f36e5ebbad81439d0fd4472869b5f, type: 3}
   damageSprites:
   - {fileID: 21300000, guid: 71430d6dddf3db64f87f98c016831924, type: 3}
   - {fileID: 21300000, guid: 30d88a71a3b0dc140bfad7ac0127bead, type: 3}
@@ -1937,17 +1951,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.014733791, y: 0.3581661}
+  m_Offset: {x: -0.012120724, y: -0.3319788}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    border: {x: 0, y: 0.07, z: 0, w: 0}
+    pivot: {x: 0.51851135, y: 0.29953068}
     oldSize: {x: 1.25, y: 2.17}
     newSize: {x: 1.25, y: 2.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3954792, y: 0.26451707}
+  m_Size: {x: 0.7392092, y: 0.60287666}
   m_EdgeRadius: 0
 --- !u!114 &1596928511
 MonoBehaviour:
@@ -1962,7 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::arbol
   maxHP: 10
-  woodDropPrefab: {fileID: 0}
+  woodDropPrefab: {fileID: 7889616483443511316, guid: 021f36e5ebbad81439d0fd4472869b5f, type: 3}
   damageSprites:
   - {fileID: 21300000, guid: 71430d6dddf3db64f87f98c016831924, type: 3}
   - {fileID: 21300000, guid: 30d88a71a3b0dc140bfad7ac0127bead, type: 3}
@@ -2409,17 +2423,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.014733791, y: 0.3581661}
+  m_Offset: {x: -0.026407719, y: -0.34672457}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    border: {x: 0, y: 0.07, z: 0, w: 0}
+    pivot: {x: 0.51851135, y: 0.29953068}
     oldSize: {x: 1.25, y: 2.17}
     newSize: {x: 1.25, y: 2.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3954792, y: 0.26451707}
+  m_Size: {x: 0.7739811, y: 0.5662211}
   m_EdgeRadius: 0
 --- !u!114 &1644914769
 MonoBehaviour:
@@ -2434,7 +2448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::arbol
   maxHP: 10
-  woodDropPrefab: {fileID: 0}
+  woodDropPrefab: {fileID: 7889616483443511316, guid: 021f36e5ebbad81439d0fd4472869b5f, type: 3}
   damageSprites:
   - {fileID: 21300000, guid: 71430d6dddf3db64f87f98c016831924, type: 3}
   - {fileID: 21300000, guid: 30d88a71a3b0dc140bfad7ac0127bead, type: 3}
@@ -2710,7 +2724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9d8bd2d808aa64d86e57c0e130664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 3
+  speed: 1.5
   idleDelay: 0.1
 --- !u!114 &2011958057
 MonoBehaviour:
