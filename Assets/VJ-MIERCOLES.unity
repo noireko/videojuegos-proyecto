@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 21888906}
   - component: {fileID: 21888905}
   - component: {fileID: 21888904}
+  - component: {fileID: 21888907}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 1_0
   m_TagString: Untagged
@@ -308,7 +309,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0008714199, y: -0.103159755}
+  m_Offset: {x: -0.0008714199, y: -0.20561668}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -318,7 +319,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.076127, y: 0.2942775}
+  m_Size: {x: 1.076127, y: 0.49919134}
   m_EdgeRadius: 0
 --- !u!212 &21888905
 SpriteRenderer:
@@ -394,6 +395,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &21888907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21888902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &60816073
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +418,7 @@ GameObject:
   - component: {fileID: 60816077}
   - component: {fileID: 60816076}
   - component: {fileID: 60816075}
+  - component: {fileID: 60816078}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 1_0 (1)
   m_TagString: Untagged
@@ -446,7 +460,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0008714199, y: -0.103159755}
+  m_Offset: {x: -0.0008714199, y: -0.20561668}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -456,7 +470,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.076127, y: 0.2942775}
+  m_Size: {x: 1.076127, y: 0.49919134}
   m_EdgeRadius: 0
 --- !u!212 &60816076
 SpriteRenderer:
@@ -532,6 +546,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60816078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60816073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &376464017
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +569,7 @@ GameObject:
   - component: {fileID: 376464021}
   - component: {fileID: 376464020}
   - component: {fileID: 376464019}
+  - component: {fileID: 376464022}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 36_0 (1)
   m_TagString: Untagged
@@ -670,6 +697,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376464022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376464017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &384722113
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +720,7 @@ GameObject:
   - component: {fileID: 384722117}
   - component: {fileID: 384722116}
   - component: {fileID: 384722114}
+  - component: {fileID: 384722118}
   m_Layer: 0
   m_Name: ChatGPT Image 20 may 2026, 20_06_30 2_0
   m_TagString: Untagged
@@ -808,6 +848,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &384722118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384722113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &761797901
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +871,7 @@ GameObject:
   - component: {fileID: 761797905}
   - component: {fileID: 761797904}
   - component: {fileID: 761797902}
+  - component: {fileID: 761797906}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 38_0
   m_TagString: Untagged
@@ -946,6 +999,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &761797906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761797901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &837829712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1361,7 @@ GameObject:
   - component: {fileID: 1124845037}
   - component: {fileID: 1124845036}
   - component: {fileID: 1124845034}
+  - component: {fileID: 1124845038}
   m_Layer: 0
   m_Name: ChatGPT Image 20 may 2026, 20_06_30 2_0 (1)
   m_TagString: Untagged
@@ -1423,6 +1489,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1124845038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124845033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &1150092578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1767,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.014733791, y: 0.3581661}
+  m_Offset: {x: -0.0011538565, y: 0.243482}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -1699,7 +1777,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3954792, y: 0.26451707}
+  m_Size: {x: 0.65261537, y: 0.71607137}
   m_EdgeRadius: 0
 --- !u!114 &1287092678
 MonoBehaviour:
@@ -1986,6 +2064,7 @@ GameObject:
   - component: {fileID: 1598438256}
   - component: {fileID: 1598438255}
   - component: {fileID: 1598438253}
+  - component: {fileID: 1598438257}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 38_0 (1)
   m_TagString: Untagged
@@ -2113,6 +2192,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1598438257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598438252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &1599905259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2215,7 @@ GameObject:
   - component: {fileID: 1599905263}
   - component: {fileID: 1599905262}
   - component: {fileID: 1599905260}
+  - component: {fileID: 1599905264}
   m_Layer: 0
   m_Name: ChatGPT Image 20 may 2026, 20_06_30 2_0 (2)
   m_TagString: Untagged
@@ -2251,6 +2343,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1599905264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599905259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &1644914766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,6 +2536,7 @@ GameObject:
   - component: {fileID: 1722032932}
   - component: {fileID: 1722032931}
   - component: {fileID: 1722032930}
+  - component: {fileID: 1722032933}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 35_0
   m_TagString: Untagged
@@ -2559,6 +2664,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1722032933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722032928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &2011958055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9d8bd2d808aa64d86e57c0e130664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 5
+  speed: 3
   idleDelay: 0.1
 --- !u!114 &2011958057
 MonoBehaviour:
@@ -2610,7 +2727,7 @@ MonoBehaviour:
   interactRadius: 1.5
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   hitInterval: 0.5
 --- !u!50 &2011958058
 Rigidbody2D:
@@ -2792,6 +2909,7 @@ GameObject:
   - component: {fileID: 2013506474}
   - component: {fileID: 2013506473}
   - component: {fileID: 2013506471}
+  - component: {fileID: 2013506475}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 35_0 (1)
   m_TagString: Untagged
@@ -2919,6 +3037,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2013506475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013506470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1 &2065532199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,6 +3060,7 @@ GameObject:
   - component: {fileID: 2065532203}
   - component: {fileID: 2065532202}
   - component: {fileID: 2065532201}
+  - component: {fileID: 2065532204}
   m_Layer: 0
   m_Name: Gemini_Generated_Image_5nj80j5nj80j5nj8 36_0
   m_TagString: Untagged
@@ -3057,6 +3188,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2065532204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065532199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
