@@ -37,10 +37,7 @@ public class InventoryUI : MonoBehaviour
     {
         foreach (ItemUI itemUI in itemUIs)
         {
-            int amount = 0;
-
-            if (Inventory.instance.Items.ContainsKey(itemUI.itemName))
-                amount = Inventory.instance.Items[itemUI.itemName];
+            int amount = Inventory.instance.GetItemAmount(itemUI.itemName);
 
             itemUI.amountText.text = amount.ToString();
 
