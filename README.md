@@ -1,4 +1,5 @@
 # Funciones (Por ahora)
 
-## Interactuar por objetos apretando E
+## Interactuar por objetos apretando E (Por ahora solo arboles)
 ## Movimiento omnidireccional
+## Correr en todas las direcciones
