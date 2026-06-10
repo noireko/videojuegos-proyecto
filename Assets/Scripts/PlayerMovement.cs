@@ -53,28 +53,26 @@ public class PlayerMovement : MonoBehaviour
         if (isLocked)
             return;
 
-        bool isAiming = Input.GetMouseButton(1);
-        animator.SetBool("isAiming", isAiming);
-
-        if (isAiming)
-        {
-            movement = Vector2.zero;
-            animator.SetBool("isMoving", false);
-            animator.SetBool("isRunning", false);
-            return;
-        }
-
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(x, y).normalized;
 
         bool isMoving = x != 0 || y != 0;
-        bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving;
+        bool isAiming = Input.GetMouseButton(1);
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving && !isAiming;
 
         currentSpeed = isRunning ? runSpeed : walkSpeed;
 
+        animator.SetBool("isAiming", isAiming);
         animator.SetBool("isRunning", isRunning);
+
+        if (isAiming)
+{
+    SetDirectionToMouse();
+    animator.SetBool("isMoving", false);
+    animator.SetBool("isRunning", false);
+}
 
         if (isMoving)
         {
@@ -97,6 +95,59 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isRunning", false);
             }
         }
+    }
+
+    void SetDirectionToMouse()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = mouseWorldPos - transform.position;
+
+        if (dir.magnitude < 0.1f)
+            return;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        int aimX = 0;
+        int aimY = 0;
+
+        if (angle >= -22.5f && angle < 22.5f)
+        {
+            aimX = 1; aimY = 0;
+        }
+        else if (angle >= 22.5f && angle < 67.5f)
+        {
+            aimX = 1; aimY = 1;
+        }
+        else if (angle >= 67.5f && angle < 112.5f)
+        {
+            aimX = 0; aimY = 1;
+        }
+        else if (angle >= 112.5f && angle < 157.5f)
+        {
+            aimX = -1; aimY = 1;
+        }
+        else if (angle >= 157.5f || angle < -157.5f)
+        {
+            aimX = -1; aimY = 0;
+        }
+        else if (angle >= -157.5f && angle < -112.5f)
+        {
+            aimX = -1; aimY = -1;
+        }
+        else if (angle >= -112.5f && angle < -67.5f)
+        {
+            aimX = 0; aimY = -1;
+        }
+        else if (angle >= -67.5f && angle < -22.5f)
+        {
+            aimX = 1; aimY = -1;
+        }
+
+        lastX = aimX;
+        lastY = aimY;
+
+        animator.SetInteger("moveX", lastX);
+        animator.SetInteger("moveY", lastY);
     }
 
     void FixedUpdate()
