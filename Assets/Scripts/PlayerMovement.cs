@@ -52,6 +52,16 @@ public class PlayerMovement : MonoBehaviour
         if (isLocked)
             return;
 
+        bool isAiming = Input.GetMouseButton(1);
+animator.SetBool("isAiming", isAiming);
+
+if (isAiming)
+{
+    movement = Vector2.zero;
+    animator.SetBool("isMoving", false);
+    return;
+}
+
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
 
@@ -85,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isRunning", false);
             }
         }
+        
     }
 
     void FixedUpdate()
