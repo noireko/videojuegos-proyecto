@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private int lastY = -1;
 
     private float idleTimer = 0f;
-
     private bool isLocked = false;
 
     void Start()
@@ -31,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("moveX", lastX);
         animator.SetInteger("moveY", lastY);
         animator.SetBool("isRunning", false);
+        animator.SetBool("isAiming", false);
     }
 
     public void SetLocked(bool locked)
@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
             animator.SetBool("isMoving", false);
             animator.SetBool("isRunning", false);
+            animator.SetBool("isAiming", false);
         }
     }
 
@@ -53,14 +54,15 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         bool isAiming = Input.GetMouseButton(1);
-animator.SetBool("isAiming", isAiming);
+        animator.SetBool("isAiming", isAiming);
 
-if (isAiming)
-{
-    movement = Vector2.zero;
-    animator.SetBool("isMoving", false);
-    return;
-}
+        if (isAiming)
+        {
+            movement = Vector2.zero;
+            animator.SetBool("isMoving", false);
+            animator.SetBool("isRunning", false);
+            return;
+        }
 
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
@@ -95,7 +97,6 @@ if (isAiming)
                 animator.SetBool("isRunning", false);
             }
         }
-        
     }
 
     void FixedUpdate()
