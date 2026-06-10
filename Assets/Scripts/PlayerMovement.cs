@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("moveY", lastY);
         animator.SetBool("isRunning", false);
         animator.SetBool("isAiming", false);
+        animator.SetBool("isWeaponReady", false);
     }
 
     public void SetLocked(bool locked)
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
             animator.SetBool("isRunning", false);
             animator.SetBool("isAiming", false);
+            animator.SetBool("isWeaponReady", false);
         }
     }
 
@@ -53,26 +55,47 @@ public class PlayerMovement : MonoBehaviour
         if (isLocked)
             return;
 
+        bool isAiming = Input.GetMouseButton(1);
+        bool wasAiming = animator.GetBool("isAiming");
+
+        animator.SetBool("isAiming", isAiming);
+
+        if (isAiming)
+        {
+            movement = Vector2.zero;
+
+            animator.SetBool("isMoving", false);
+            animator.SetBool("isRunning", false);
+
+            bool weaponReady = animator.GetBool("isWeaponReady");
+
+            // Apenas empezás a apuntar, fija una dirección inicial.
+            if (!wasAiming)
+            {
+                SetDirectionToMouse();
+            }
+
+            // Mientras se está reproduciendo Aim, NO actualiza dirección.
+            // Recién cuando el arma está lista, el mouse cambia los Hold.
+            if (weaponReady)
+            {
+                SetDirectionToMouse();
+            }
+
+            return;
+        }
+
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(x, y).normalized;
 
         bool isMoving = x != 0 || y != 0;
-        bool isAiming = Input.GetMouseButton(1);
-        bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving && !isAiming;
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving;
 
         currentSpeed = isRunning ? runSpeed : walkSpeed;
 
-        animator.SetBool("isAiming", isAiming);
         animator.SetBool("isRunning", isRunning);
-
-        if (isAiming)
-{
-    SetDirectionToMouse();
-    animator.SetBool("isMoving", false);
-    animator.SetBool("isRunning", false);
-}
 
         if (isMoving)
         {
@@ -112,35 +135,43 @@ public class PlayerMovement : MonoBehaviour
 
         if (angle >= -22.5f && angle < 22.5f)
         {
-            aimX = 1; aimY = 0;
+            aimX = 1;
+            aimY = 0;
         }
         else if (angle >= 22.5f && angle < 67.5f)
         {
-            aimX = 1; aimY = 1;
+            aimX = 1;
+            aimY = 1;
         }
         else if (angle >= 67.5f && angle < 112.5f)
         {
-            aimX = 0; aimY = 1;
+            aimX = 0;
+            aimY = 1;
         }
         else if (angle >= 112.5f && angle < 157.5f)
         {
-            aimX = -1; aimY = 1;
+            aimX = -1;
+            aimY = 1;
         }
         else if (angle >= 157.5f || angle < -157.5f)
         {
-            aimX = -1; aimY = 0;
+            aimX = -1;
+            aimY = 0;
         }
         else if (angle >= -157.5f && angle < -112.5f)
         {
-            aimX = -1; aimY = -1;
+            aimX = -1;
+            aimY = -1;
         }
         else if (angle >= -112.5f && angle < -67.5f)
         {
-            aimX = 0; aimY = -1;
+            aimX = 0;
+            aimY = -1;
         }
         else if (angle >= -67.5f && angle < -22.5f)
         {
-            aimX = 1; aimY = -1;
+            aimX = 1;
+            aimY = -1;
         }
 
         lastX = aimX;
@@ -148,6 +179,16 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetInteger("moveX", lastX);
         animator.SetInteger("moveY", lastY);
+    }
+
+    public void WeaponReady()
+    {
+        animator.SetBool("isWeaponReady", true);
+    }
+
+    public void WeaponHolstered()
+    {
+        animator.SetBool("isWeaponReady", false);
     }
 
     void FixedUpdate()
@@ -168,14 +209,4 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.sortingOrder =
             Mathf.RoundToInt(transform.position.y * -100);
     }
-
-    public void WeaponHolstered()
-{
-    animator.SetBool("isWeaponReady", false);
-}
-
-public void WeaponReady()
-{
-    animator.SetBool("isWeaponReady", true);
-}
 }

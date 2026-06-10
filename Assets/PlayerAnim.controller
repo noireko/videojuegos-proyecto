@@ -2871,6 +2871,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: moveY
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAiming
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1023257554919589665}
   m_Solo: 0
@@ -2958,6 +2961,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: moveY
     m_EventTreshold: -1
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAiming
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1509123480941078977}
   m_Solo: 0
@@ -4547,6 +4553,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: moveY
     m_EventTreshold: -1
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAiming
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -791431875363525760}
   m_Solo: 0
@@ -4577,6 +4586,9 @@ AnimatorStateTransition:
     m_EventTreshold: 1
   - m_ConditionMode: 6
     m_ConditionEvent: moveY
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAiming
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1008709329019977733}
@@ -4780,6 +4792,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: moveY
     m_EventTreshold: 1
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAiming
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5266873345855196828}
   m_Solo: 0
@@ -5002,6 +5017,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isWeaponReady
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAiming
+    m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: moveX
     m_EventTreshold: -1
@@ -5151,6 +5169,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: moveY
     m_EventTreshold: -1
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAiming
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4321521947886224191}
   m_Solo: 0
