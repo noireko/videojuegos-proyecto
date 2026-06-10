@@ -16,11 +16,17 @@ public class PlayerMovement : MonoBehaviour
     private int lastX = 0;
     private int lastY = -1;
 
+    // ✅ Variables separadas para la dirección de apuntado
+    private int lastAimX = -999;
+    private int lastAimY = -999;
+
     private float idleTimer = 0f;
     private bool isLocked = false;
 
     void Start()
     {
+        Debug.Log("PlayerMovement iniciado en: " + gameObject.name);
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -62,25 +68,34 @@ public class PlayerMovement : MonoBehaviour
 
         if (isAiming)
         {
+
             movement = Vector2.zero;
 
             animator.SetBool("isMoving", false);
             animator.SetBool("isRunning", false);
 
-            // Al empezar a apuntar, fija dirección inicial hacia el mouse
+            // Al empezar a apuntar, resetea el cache para forzar el primer seteo
             if (!wasAiming)
             {
+                lastAimX = -999;
+                lastAimY = -999;
                 SetDirectionToMouse();
             }
 
-            // Una vez que el arma está lista, actualiza dirección con el mouse
-            // El guard dentro de SetDirectionToMouse evita reiniciar la animación
+            // Mientras el arma está lista, actualiza dirección con el mouse
             if (animator.GetBool("isWeaponReady"))
             {
                 SetDirectionToMouse();
             }
 
             return;
+        }
+
+        // Al dejar de apuntar, resetea el cache de aim
+        if (wasAiming)
+        {
+            lastAimX = -999;
+            lastAimY = -999;
         }
 
         // --- Movimiento normal (sin apuntar) ---
@@ -99,7 +114,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (isMoving)
         {
-            // Solo actualizar dirección de movimiento si realmente cambió
             if (x != lastX || y != lastY)
             {
                 lastX = x;
@@ -126,16 +140,15 @@ public class PlayerMovement : MonoBehaviour
 
     void SetDirectionToMouse()
     {
+        Debug.Log("SetDirectionToMouse llamado");
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = mouseWorldPos - transform.position;
 
-        if (dir.magnitude < 0.1f)
-            return;
+        if (dir.magnitude < 0.1f) return;
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        int aimX = 0;
-        int aimY = 0;
+        int aimX = 0, aimY = 0;
 
         if      (angle >= -22.5f  && angle <   22.5f) { aimX =  1; aimY =  0; }
         else if (angle >=  22.5f  && angle <   67.5f) { aimX =  1; aimY =  1; }
@@ -146,16 +159,22 @@ public class PlayerMovement : MonoBehaviour
         else if (angle >= -112.5f && angle <  -67.5f) { aimX =  0; aimY = -1; }
         else if (angle >=  -67.5f && angle <  -22.5f) { aimX =  1; aimY = -1; }
 
-        // ✅ Guard clave: si la dirección no cambió, no tocar el Animator
-        // Esto evita que Unity dispare transiciones y reinicie la animación
-        if (aimX == lastX && aimY == lastY)
-            return;
+        // Guard: usa lastAimX/Y separados del movimiento
+        if (aimX == lastAimX && aimY == lastAimY)
+{
+    Debug.Log("Guard bloqueó - aimX: " + aimX + " aimY: " + aimY);
+    return;
+}
 
-        lastX = aimX;
-        lastY = aimY;
+Debug.Log("Seteando aimX: " + aimX + " aimY: " + aimY);
+animator.SetFloat("aimX", (float)aimX);
+animator.SetFloat("aimY", (float)aimY);
 
-        animator.SetInteger("moveX", lastX);
-        animator.SetInteger("moveY", lastY);
+        lastAimX = aimX;
+        lastAimY = aimY;
+
+        animator.SetFloat("aimX", (float)aimX);
+        animator.SetFloat("aimY", (float)aimY);
     }
 
     public void WeaponReady()
