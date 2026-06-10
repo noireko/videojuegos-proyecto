@@ -173,4 +173,9 @@ public class PlayerMovement : MonoBehaviour
 {
     animator.SetBool("isWeaponReady", false);
 }
+
+public void WeaponReady()
+{
+    animator.SetBool("isWeaponReady", true);
+}
 }
