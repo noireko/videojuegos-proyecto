@@ -168,4 +168,9 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.sortingOrder =
             Mathf.RoundToInt(transform.position.y * -100);
     }
+
+    public void WeaponHolstered()
+{
+    animator.SetBool("isWeaponReady", false);
+}
 }
