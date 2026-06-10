@@ -66,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("isAiming", isAiming);
 
+        if (!isAiming && wasAiming)
+        {
+            animator.SetBool("isWeaponReady", false);
+            }
+
         if (isAiming)
         {
 
