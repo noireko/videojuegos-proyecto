@@ -67,23 +67,23 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
             animator.SetBool("isRunning", false);
 
-            bool weaponReady = animator.GetBool("isWeaponReady");
-
-            // Apenas empezás a apuntar, fija una dirección inicial.
+            // Al empezar a apuntar, fija dirección inicial hacia el mouse
             if (!wasAiming)
             {
                 SetDirectionToMouse();
             }
 
-            // Mientras se está reproduciendo Aim, NO actualiza dirección.
-            // Recién cuando el arma está lista, el mouse cambia los Hold.
-            if (weaponReady)
+            // Una vez que el arma está lista, actualiza dirección con el mouse
+            // El guard dentro de SetDirectionToMouse evita reiniciar la animación
+            if (animator.GetBool("isWeaponReady"))
             {
                 SetDirectionToMouse();
             }
 
             return;
         }
+
+        // --- Movimiento normal (sin apuntar) ---
 
         int x = (int)Input.GetAxisRaw("Horizontal");
         int y = (int)Input.GetAxisRaw("Vertical");
@@ -99,13 +99,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (isMoving)
         {
-            lastX = x;
-            lastY = y;
+            // Solo actualizar dirección de movimiento si realmente cambió
+            if (x != lastX || y != lastY)
+            {
+                lastX = x;
+                lastY = y;
 
-            animator.SetInteger("moveX", lastX);
-            animator.SetInteger("moveY", lastY);
+                animator.SetInteger("moveX", lastX);
+                animator.SetInteger("moveY", lastY);
+            }
+
             animator.SetBool("isMoving", true);
-
             idleTimer = idleDelay;
         }
         else
@@ -133,46 +137,19 @@ public class PlayerMovement : MonoBehaviour
         int aimX = 0;
         int aimY = 0;
 
-        if (angle >= -22.5f && angle < 22.5f)
-        {
-            aimX = 1;
-            aimY = 0;
-        }
-        else if (angle >= 22.5f && angle < 67.5f)
-        {
-            aimX = 1;
-            aimY = 1;
-        }
-        else if (angle >= 67.5f && angle < 112.5f)
-        {
-            aimX = 0;
-            aimY = 1;
-        }
-        else if (angle >= 112.5f && angle < 157.5f)
-        {
-            aimX = -1;
-            aimY = 1;
-        }
-        else if (angle >= 157.5f || angle < -157.5f)
-        {
-            aimX = -1;
-            aimY = 0;
-        }
-        else if (angle >= -157.5f && angle < -112.5f)
-        {
-            aimX = -1;
-            aimY = -1;
-        }
-        else if (angle >= -112.5f && angle < -67.5f)
-        {
-            aimX = 0;
-            aimY = -1;
-        }
-        else if (angle >= -67.5f && angle < -22.5f)
-        {
-            aimX = 1;
-            aimY = -1;
-        }
+        if      (angle >= -22.5f  && angle <   22.5f) { aimX =  1; aimY =  0; }
+        else if (angle >=  22.5f  && angle <   67.5f) { aimX =  1; aimY =  1; }
+        else if (angle >=  67.5f  && angle <  112.5f) { aimX =  0; aimY =  1; }
+        else if (angle >= 112.5f  && angle <  157.5f) { aimX = -1; aimY =  1; }
+        else if (angle >=  157.5f || angle  < -157.5f) { aimX = -1; aimY =  0; }
+        else if (angle >= -157.5f && angle < -112.5f) { aimX = -1; aimY = -1; }
+        else if (angle >= -112.5f && angle <  -67.5f) { aimX =  0; aimY = -1; }
+        else if (angle >=  -67.5f && angle <  -22.5f) { aimX =  1; aimY = -1; }
+
+        // ✅ Guard clave: si la dirección no cambió, no tocar el Animator
+        // Esto evita que Unity dispare transiciones y reinicie la animación
+        if (aimX == lastX && aimY == lastY)
+            return;
 
         lastX = aimX;
         lastY = aimY;
