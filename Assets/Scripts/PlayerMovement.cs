@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("PlayerMovement iniciado en: " + gameObject.name);
+        
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -66,10 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("isAiming", isAiming);
 
-        if (!isAiming && wasAiming)
-        {
-            animator.SetBool("isWeaponReady", false);
-            }
+        
 
         if (isAiming)
         {
@@ -167,11 +164,10 @@ public class PlayerMovement : MonoBehaviour
         // Guard: usa lastAimX/Y separados del movimiento
         if (aimX == lastAimX && aimY == lastAimY)
 {
-    Debug.Log("Guard bloqueó - aimX: " + aimX + " aimY: " + aimY);
+    
     return;
 }
 
-Debug.Log("Seteando aimX: " + aimX + " aimY: " + aimY);
 animator.SetFloat("aimX", (float)aimX);
 animator.SetFloat("aimY", (float)aimY);
 
