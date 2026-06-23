@@ -31,6 +31,10 @@ public class Inventory : MonoBehaviour
         }
 
         Debug.Log($"{itemName}: {items[itemName]}");
+
+        InventoryUI ui = FindObjectOfType<InventoryUI>();
+        if (ui != null) ui.RefrescarUI();
+
     }
 
     public int GetItemAmount(string itemName)

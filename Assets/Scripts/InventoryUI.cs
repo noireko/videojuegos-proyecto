@@ -1,49 +1,92 @@
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    [System.Serializable]
-    public class ItemUI
-    {
-        public string itemName;
-        public Image icon;
-        public TMP_Text amountText;
-    }
+    [SerializeField] GameObject inventoryPanel;
+    [SerializeField] Transform gridObjetos;
+    [SerializeField] Transform gridArmas;
+    [SerializeField] GameObject slotPrefab;
 
-    [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private ItemUI[] itemUIs;
+    [Header("Items definidos")]
+    [SerializeField] List<ItemDefinition> itemsDefinidos;
 
-    private bool isOpen = false;
+    Dictionary<string, SlotUI> slots = new Dictionary<string, SlotUI>();
 
     void Start()
     {
         inventoryPanel.SetActive(false);
-        UpdateUI();
+        InicializarSlots();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            isOpen = !isOpen;
-            inventoryPanel.SetActive(isOpen);
-            UpdateUI();
+            bool abierto = inventoryPanel.activeSelf;
+            inventoryPanel.SetActive(!abierto);
+
+            if (!abierto)
+                RefrescarUI();
         }
     }
 
-    public void UpdateUI()
+    void InicializarSlots()
     {
-        foreach (ItemUI itemUI in itemUIs)
+        foreach (var item in itemsDefinidos)
         {
-            int amount = Inventory.instance.GetItemAmount(itemUI.itemName);
+            Transform grid = item.esArma ? gridArmas : gridObjetos;
+            GameObject slotGO = Instantiate(slotPrefab, grid);
 
-            itemUI.amountText.text = amount.ToString();
+            SlotUI slot = new SlotUI
+            {
+                icon = slotGO.transform.Find("ItemIcon").GetComponent<Image>(),
+                amountText = slotGO.transform.Find("AmountText").GetComponent<TextMeshProUGUI>(),
+                itemName = item.nombre
+            };
 
-            bool hasItem = amount > 0;
-            itemUI.icon.enabled = hasItem;
-            itemUI.amountText.enabled = hasItem;
+            slot.icon.sprite = item.icono;
+            slot.icon.color = new Color(1, 1, 1, 0.2f); // transparente si no hay
+            slot.amountText.text = "";
+
+            slots[item.nombre] = slot;
         }
     }
+
+    public void RefrescarUI()
+    {
+        foreach (var kvp in slots)
+        {
+            int cantidad = Inventory.instance.GetItemAmount(kvp.Key);
+            SlotUI slot = kvp.Value;
+
+            if (cantidad > 0)
+            {
+                slot.icon.color = Color.white;
+                slot.amountText.text = cantidad.ToString();
+            }
+            else
+            {
+                slot.icon.color = new Color(1, 1, 1, 0.2f);
+                slot.amountText.text = "";
+            }
+        }
+    }
+}
+
+[System.Serializable]
+public class ItemDefinition
+{
+    public string nombre;
+    public Sprite icono;
+    public bool esArma;
+}
+
+class SlotUI
+{
+    public string itemName;
+    public Image icon;
+    public TextMeshProUGUI amountText;
 }
