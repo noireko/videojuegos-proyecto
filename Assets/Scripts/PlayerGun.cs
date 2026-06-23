@@ -3,14 +3,22 @@ using UnityEngine;
 public class PlayerGun : MonoBehaviour
 {
     [SerializeField] float fireRate = 0.2f;
-    [SerializeField] float range = 20f;
-    [SerializeField] LayerMask shootableLayer;
-    [SerializeField] GameObject bulletPrefab;      // ← nuevo
-    [SerializeField] Transform firePoint;          // ← nuevo
+    [SerializeField] GameObject bulletPrefab;
+
+    [Header("FirePoints")]
+    [SerializeField] Transform fp_Right;
+    [SerializeField] Transform fp_UpRight;
+    [SerializeField] Transform fp_Up;
+    [SerializeField] Transform fp_UpLeft;
+    [SerializeField] Transform fp_Left;
+    [SerializeField] Transform fp_DownLeft;
+    [SerializeField] Transform fp_Down;
+    [SerializeField] Transform fp_DownRight;
 
     float lastFireTime;
     Camera cam;
     Animator animator;
+    Transform currentFirePoint;
 
     void Start()
     {
@@ -20,8 +28,9 @@ public class PlayerGun : MonoBehaviour
 
     void Update()
     {
-        bool isAiming = animator.GetBool("isWeaponReady");
+        ActualizarFirePoint();
 
+        bool isAiming = animator.GetBool("isWeaponReady");
         if (isAiming && Input.GetMouseButton(0) && Time.time >= lastFireTime + fireRate)
         {
             Disparar();
@@ -29,18 +38,29 @@ public class PlayerGun : MonoBehaviour
         }
     }
 
+    void ActualizarFirePoint()
+    {
+        int aimX = Mathf.RoundToInt(animator.GetFloat("aimX"));
+        int aimY = Mathf.RoundToInt(animator.GetFloat("aimY"));
+
+        if      (aimX ==  1 && aimY ==  0) currentFirePoint = fp_Right;
+        else if (aimX ==  1 && aimY ==  1) currentFirePoint = fp_UpRight;
+        else if (aimX ==  0 && aimY ==  1) currentFirePoint = fp_Up;
+        else if (aimX == -1 && aimY ==  1) currentFirePoint = fp_UpLeft;
+        else if (aimX == -1 && aimY ==  0) currentFirePoint = fp_Left;
+        else if (aimX == -1 && aimY == -1) currentFirePoint = fp_DownLeft;
+        else if (aimX ==  0 && aimY == -1) currentFirePoint = fp_Down;
+        else if (aimX ==  1 && aimY == -1) currentFirePoint = fp_DownRight;
+    }
+
     void Disparar()
     {
+        if (bulletPrefab == null || currentFirePoint == null) return;
+
         Vector2 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direccion = (mouseWorld - (Vector2)transform.position).normalized;
 
-        // Instanciar bala
-        if (bulletPrefab != null && firePoint != null)
-        {
-            GameObject bala = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-            bala.GetComponent<Bullet>().SetDirection(direccion);
-        }
-
-        Debug.DrawRay(transform.position, direccion * range, Color.red, 0.1f);
+        GameObject bala = Instantiate(bulletPrefab, currentFirePoint.position, Quaternion.identity);
+        bala.GetComponent<Bullet>().SetDirection(direccion);
     }
 }
