@@ -5,6 +5,8 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] float fireRate = 0.2f;
     [SerializeField] float range = 20f;
     [SerializeField] LayerMask shootableLayer;
+    [SerializeField] GameObject bulletPrefab;      // ← nuevo
+    [SerializeField] Transform firePoint;          // ← nuevo
 
     float lastFireTime;
     Camera cam;
@@ -32,15 +34,11 @@ public class PlayerGun : MonoBehaviour
         Vector2 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direccion = (mouseWorld - (Vector2)transform.position).normalized;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direccion, range, shootableLayer);
-
-        if (hit.collider != null)
+        // Instanciar bala
+        if (bulletPrefab != null && firePoint != null)
         {
-            IDamageable damageable = hit.collider.GetComponent<IDamageable>();
-            if (damageable != null)
-                damageable.TakeDamage(25);
-
-            Debug.Log($"Impacto en: {hit.collider.name}");
+            GameObject bala = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            bala.GetComponent<Bullet>().SetDirection(direccion);
         }
 
         Debug.DrawRay(transform.position, direccion * range, Color.red, 0.1f);
