@@ -6,35 +6,29 @@ public class Bullet : MonoBehaviour
     [SerializeField] int damage = 25;
     [SerializeField] float lifetime = 2f;
 
+    Rigidbody2D rb;
     Vector2 direction;
 
-    void Start()
+    void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifetime);
     }
 
     public void SetDirection(Vector2 dir)
     {
         direction = dir.normalized;
-    }
-
-    void Update()
-    {
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        if (rb != null)
+            rb.linearVelocity = direction * speed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Player")) return;
+
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
-        {
             damageable.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-
-        // que no choque con el jugador ni con otras balas
-        if (other.CompareTag("Player") || other.CompareTag("Bullet"))
-            return;
 
         Destroy(gameObject);
     }
