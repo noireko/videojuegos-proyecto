@@ -4,21 +4,56 @@ public class InteractionTextUI : MonoBehaviour
 {
     public static InteractionTextUI instance;
 
-    [SerializeField] private GameObject imageObject; // el GameObject con el sprite de texto
+    [Tooltip("Todos los posibles mensajes/imágenes. El índice 0 es el que ya tenías.")]
+    [SerializeField] private GameObject[] imageObjects;
+
+    [SerializeField] private float lifeTime = 2f;
+    public float LifeTime => lifeTime;
+
+    private float timer;
+    private int currentIndex = -1;
 
     void Awake()
     {
         instance = this;
-        imageObject.SetActive(false);
+        HideAll();
     }
 
-    public void Show()
+    void Update()
     {
-        imageObject.SetActive(true);
+        if (currentIndex < 0) return;
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
+            Hide();
+    }
+
+    /// <summary>Muestra el imagen en el índice indicado.</summary>
+    public void Show(int index = 0)
+    {
+        HideAll();
+
+        if (index < 0 || index >= imageObjects.Length)
+        {
+            Debug.LogWarning($"InteractionTextUI: índice {index} fuera de rango.");
+            return;
+        }
+
+        currentIndex = index;
+        imageObjects[currentIndex].SetActive(true);
+        timer = lifeTime;
     }
 
     public void Hide()
     {
-        imageObject.SetActive(false);
+        if (currentIndex >= 0 && currentIndex < imageObjects.Length)
+            imageObjects[currentIndex].SetActive(false);
+        currentIndex = -1;
+    }
+
+    private void HideAll()
+    {
+        foreach (var obj in imageObjects)
+            if (obj != null) obj.SetActive(false);
+        currentIndex = -1;
     }
 }
