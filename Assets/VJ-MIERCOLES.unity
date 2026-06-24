@@ -1736,13 +1736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14378fd18d7bbbf4a8fd9ff4318a1056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingSlotUI
-  amountText: {fileID: 0}
-  buildButton: {fileID: 0}
-  buildButtonImage: {fileID: 0}
-  colorSuficiente: {r: 0, g: 1, b: 0, a: 1}
-  colorInsuficiente: {r: 1, g: 0, b: 0, a: 1}
-  botonActivo: {r: 0, g: 0, b: 0, a: 0}
-  botonInactivo: {r: 0, g: 0, b: 0, a: 0}
+  amountText: {fileID: 1296725879}
+  buildButton: {fileID: 715085030}
+  buildButtonImage: {fileID: 1811903774}
+  botonVerde: {fileID: 4084494786888189514, guid: 47b11c767c1a1a04d98566821641ea77, type: 3}
+  botonGris: {fileID: 6680557288505655536, guid: fc39b69577a3b8746a940f2be16aed83, type: 3}
   itemName: Madera
   amount: 1
 --- !u!1 &833484649
@@ -2784,7 +2782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.2, y: 36.1}
+  m_AnchoredPosition: {x: -10.14, y: 34.44}
   m_SizeDelta: {x: 16.1298, y: 4.0325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296725879
@@ -2834,8 +2832,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3
-  m_fontSizeBase: 3
+  m_fontSize: 2.3
+  m_fontSizeBase: 2.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
