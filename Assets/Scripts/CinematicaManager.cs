@@ -5,27 +5,44 @@ using UnityEngine.SceneManagement;
 public class CinematicaManager : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] VideoClip[] videos;
+    [SerializeField] int escenaJuego = 2;
+
+    int currentIndex = 0;
 
     void Start()
     {
         videoPlayer.loopPointReached += TerminoVideo;
-        videoPlayer.Play();
+        ReproducirActual();
     }
 
     void Update()
     {
-        // Saltar cinemática con cualquier tecla
         if (Input.anyKeyDown)
             CargarJuego();
     }
 
+    void ReproducirActual()
+    {
+        if (currentIndex >= videos.Length)
+        {
+            CargarJuego();
+            return;
+        }
+
+        videoPlayer.clip = videos[currentIndex];
+        videoPlayer.Play();
+    }
+
     void TerminoVideo(VideoPlayer vp)
     {
-        CargarJuego();
+        currentIndex++;
+        ReproducirActual();
     }
 
     void CargarJuego()
     {
-        SceneManager.LoadScene(2);
+        videoPlayer.loopPointReached -= TerminoVideo;
+        SceneManager.LoadScene(escenaJuego);
     }
 }

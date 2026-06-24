@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public void NuevaPartida()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1); // carga la cinemática
     }
 
     public void Continuar()
