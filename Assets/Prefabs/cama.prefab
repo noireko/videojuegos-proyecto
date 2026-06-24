@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8983027724372017913}
   - component: {fileID: -1816442927490667112}
   - component: {fileID: -1111835490411038167}
-  m_Layer: 7
+  - component: {fileID: 4291116015618573820}
+  m_Layer: 3
   m_Name: cama
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,3 +169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de0e16de5694dc45a01c07e918c17b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YSort
+--- !u!114 &4291116015618573820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3965656976090157856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d606c0ead130840a26db9fb7ef8091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bed
