@@ -8,11 +8,9 @@ public class BuildingSlotUI : MonoBehaviour
     [SerializeField] Button buildButton;
     [SerializeField] Image buildButtonImage;
 
-    [Header("Colores")]
-    [SerializeField] Color colorSuficiente = Color.green;
-    [SerializeField] Color colorInsuficiente = Color.red;
-    [SerializeField] Color botonActivo;
-    [SerializeField] Color botonInactivo;
+    [Header("Sprites del botón")]
+    [SerializeField] Sprite botonVerde;
+    [SerializeField] Sprite botonGris;
 
     [Header("Costo")]
     [SerializeField] string itemName = "Madera";
@@ -22,13 +20,8 @@ public class BuildingSlotUI : MonoBehaviour
     {
         bool tieneMateriales = Inventory.instance.HasItem(itemName, amount);
 
-        // Cambiar color del texto
-        amountText.color = tieneMateriales ? colorSuficiente : colorInsuficiente;
-
-        // Cambiar color del botón
-        buildButtonImage.color = tieneMateriales ? botonActivo : botonInactivo;
-
-        // Activar o desactivar el botón
+        amountText.color = tieneMateriales ? Color.green : Color.red;
+        buildButtonImage.sprite = tieneMateriales ? botonVerde : botonGris;
         buildButton.interactable = tieneMateriales;
     }
 }
