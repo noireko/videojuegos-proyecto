@@ -2402,7 +2402,7 @@ MonoBehaviour:
     buildPrefab: {fileID: 3965656976090157856, guid: ffec3f29e9a3603418a74ddcbe0a94c2, type: 3}
     costs:
     - itemName: Madera
-      amount: 1
+      amount: 5
   gridSize: 1
   blockedLayer:
     serializedVersion: 2
@@ -2805,7 +2805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x1
+  m_text: x5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: df134f85cbbee1047a749886e5e6ca78, type: 2}
   m_sharedMaterial: {fileID: 7248619038215115974, guid: df134f85cbbee1047a749886e5e6ca78, type: 2}
