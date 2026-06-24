@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class InventoryWindowUI : MonoBehaviour
 {
-    [Header("Ventana completa")]
-    [SerializeField] private GameObject inventoryWindow;
-
     [Header("Paneles")]
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject constructionPanel;
@@ -13,9 +10,7 @@ public class InventoryWindowUI : MonoBehaviour
 
     void Start()
     {
-        inventoryWindow.SetActive(false);
-
-        inventoryPanel.SetActive(true);
+        inventoryPanel.SetActive(false);
         constructionPanel.SetActive(false);
     }
 
@@ -30,28 +25,38 @@ public class InventoryWindowUI : MonoBehaviour
     public void ToggleWindow()
     {
         isOpen = !isOpen;
-        inventoryWindow.SetActive(isOpen);
 
         if (isOpen)
         {
             ShowInventory();
         }
+        else
+        {
+            inventoryPanel.SetActive(false);
+            constructionPanel.SetActive(false);
+        }
     }
 
     public void ShowInventory()
     {
+        isOpen = true;
+
         inventoryPanel.SetActive(true);
         constructionPanel.SetActive(false);
     }
 
     public void ShowConstruction()
     {
+        isOpen = true;
+
         inventoryPanel.SetActive(false);
         constructionPanel.SetActive(true);
     }
 
     public void ToggleInventoryConstruction()
     {
+        isOpen = true;
+
         bool showingInventory = inventoryPanel.activeSelf;
 
         inventoryPanel.SetActive(!showingInventory);
@@ -61,6 +66,8 @@ public class InventoryWindowUI : MonoBehaviour
     public void CloseWindow()
     {
         isOpen = false;
-        inventoryWindow.SetActive(false);
+
+        inventoryPanel.SetActive(false);
+        constructionPanel.SetActive(false);
     }
 }
