@@ -598,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 294953998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.282, y: -0.162, z: 0}
+  m_LocalPosition: {x: 0.313, y: 0.111, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1388,7 +1388,7 @@ Transform:
   m_GameObject: {fileID: 541995266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.232, y: -0.278, z: 0}
+  m_LocalPosition: {x: -0.328, y: 0.071, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3085,7 +3085,7 @@ Transform:
   m_GameObject: {fileID: 1340566960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.274, y: 0.216, z: 0}
+  m_LocalPosition: {x: 0.299, y: 0.216, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3429,7 +3429,7 @@ Transform:
   m_GameObject: {fileID: 1552160634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.249, y: 0.461, z: 0}
+  m_LocalPosition: {x: -0.249, y: 0.203, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3717,7 +3717,7 @@ Transform:
   m_GameObject: {fileID: 1753512624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.357, y: 0.191, z: 0}
+  m_LocalPosition: {x: -0.254, y: 0.191, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4201,11 +4201,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e58aa661d22f6a4ebce39a7219ba66c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
-  interactRadius: 1.5
+  interactRadius: 0.5
   interactableLayer:
     serializedVersion: 2
     m_Bits: 8
   hitInterval: 0.5
+  interactIconPrefab: {fileID: 3254315368165637067, guid: 2c3ba408bf90f6f449576a77b7c6e5a2, type: 3}
 --- !u!50 &2011958058
 Rigidbody2D:
   serializedVersion: 5
@@ -4394,7 +4395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8345a816513bc47bea70ec58e68cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGun
-  fireRate: 0.2
+  fireRate: 0.5
   bulletPrefab: {fileID: 2373966798127620839, guid: 586ca38053dce7d429c634ea536e7d1d, type: 3}
   fp_Right: {fileID: 1183460013}
   fp_UpRight: {fileID: 1340566961}

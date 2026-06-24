@@ -20,6 +20,9 @@ public class Bullet : MonoBehaviour
         direction = dir.normalized;
         if (rb != null)
             rb.linearVelocity = direction * speed;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     void OnTriggerEnter2D(Collider2D other)

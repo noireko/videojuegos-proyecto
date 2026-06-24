@@ -2,36 +2,46 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField] float interactRadius = 1.5f;
-    [SerializeField] LayerMask interactableLayer;
-    [SerializeField] GameObject interactIcon; // ícono de E
+    [SerializeField] private float interactRadius = 1.5f;
+    [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private float hitInterval = 0.5f;
+    [SerializeField] private GameObject interactIconPrefab;
 
-    IInteractable currentTarget;
-    GameObject currentIconInstance;
+    private IInteractable currentTarget;
+    private PlayerMovement playerMovement;
+    private Animator animator;
+    private float hitTimer = 0f;
+    private GameObject currentIconInstance;
+
+    void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
         Collider2D hit = Physics2D.OverlapCircle(
-            transform.position, interactRadius, interactableLayer);
+            transform.position,
+            interactRadius,
+            interactableLayer
+        );
 
-        if (hit != null)
+        currentTarget = hit != null ? hit.GetComponent<IInteractable>() : null;
+
+        // Mostrar u ocultar ícono
+        if (currentTarget != null && hit != null)
         {
-            currentTarget = hit.GetComponent<IInteractable>();
-
-            // Mostrar ícono sobre el objeto
             if (currentIconInstance == null)
-                currentIconInstance = Instantiate(interactIcon, 
-                    hit.transform.position + Vector3.up * 1f, 
+                currentIconInstance = Instantiate(interactIconPrefab,
+                    hit.transform.position + Vector3.up * 1f,
                     Quaternion.identity);
             else
-                currentIconInstance.transform.position = 
+                currentIconInstance.transform.position =
                     hit.transform.position + Vector3.up * 1f;
         }
         else
         {
-            currentTarget = null;
-
-            // Ocultar ícono
             if (currentIconInstance != null)
             {
                 Destroy(currentIconInstance);
@@ -39,8 +49,33 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && currentTarget != null)
-            currentTarget.Interact();
+        if (hitTimer > 0f)
+            hitTimer -= Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.E) && currentTarget != null)
+        {
+            playerMovement.SetLocked(true);
+            animator.SetBool("isChopping", true);
+
+            if (hitTimer <= 0f)
+            {
+                currentTarget.Interact();
+                hitTimer = hitInterval;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            playerMovement.SetLocked(false);
+            animator.SetBool("isChopping", false);
+            hitTimer = 0f;
+        }
+
+        if (currentTarget == null && Input.GetKey(KeyCode.E))
+        {
+            playerMovement.SetLocked(false);
+            animator.SetBool("isChopping", false);
+        }
     }
 
     void OnDrawGizmosSelected()
