@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Cinematica.unity
     guid: 6e3a22213fec695429724b9546d5bc53
   - enabled: 1
+    path: Assets/Onboarding.unity
+    guid: 8dc837de735cbdd49acc843daf39796a
+  - enabled: 1
     path: Assets/VJ-MIERCOLES.unity
     guid: f8179a0eb97c194439d6ed296034f9fe
   m_configObjects:
