@@ -20,63 +20,63 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void Update()
+{
+    Collider2D hit = Physics2D.OverlapCircle(
+        transform.position,
+        interactRadius,
+        interactableLayer
+    );
+    currentTarget = hit != null ? hit.GetComponent<IInteractable>() : null;
+
+    if (currentTarget != null && hit != null)
     {
-        Collider2D hit = Physics2D.OverlapCircle(
-            transform.position,
-            interactRadius,
-            interactableLayer
-        );
-
-        currentTarget = hit != null ? hit.GetComponent<IInteractable>() : null;
-
-        // Mostrar u ocultar ícono
-        if (currentTarget != null && hit != null)
-        {
-            if (currentIconInstance == null)
-                currentIconInstance = Instantiate(interactIconPrefab,
-                    hit.transform.position + Vector3.up * 1f,
-                    Quaternion.identity);
-            else
-                currentIconInstance.transform.position =
-                    hit.transform.position + Vector3.up * 1f;
-        }
+        if (currentIconInstance == null)
+            currentIconInstance = Instantiate(interactIconPrefab,
+                hit.transform.position + Vector3.up * 1f,
+                Quaternion.identity);
         else
+            currentIconInstance.transform.position =
+                hit.transform.position + Vector3.up * 1f;
+    }
+    else
+    {
+        if (currentIconInstance != null)
         {
-            if (currentIconInstance != null)
-            {
-                Destroy(currentIconInstance);
-                currentIconInstance = null;
-            }
-        }
-
-        if (hitTimer > 0f)
-            hitTimer -= Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.E) && currentTarget != null)
-        {
-            playerMovement.SetLocked(true);
-            animator.SetBool("isChopping", true);
-
-            if (hitTimer <= 0f)
-            {
-                currentTarget.Interact();
-                hitTimer = hitInterval;
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            playerMovement.SetLocked(false);
-            animator.SetBool("isChopping", false);
-            hitTimer = 0f;
-        }
-
-        if (currentTarget == null && Input.GetKey(KeyCode.E))
-        {
-            playerMovement.SetLocked(false);
-            animator.SetBool("isChopping", false);
+            Destroy(currentIconInstance);
+            currentIconInstance = null;
         }
     }
+
+    if (hitTimer > 0f)
+        hitTimer -= Time.deltaTime;
+
+    if (Input.GetKey(KeyCode.E) && currentTarget != null)
+    {
+        playerMovement.SetLocked(true);
+
+        if (currentTarget.UsesChopAnimation)
+            animator.SetBool("isChopping", true);
+
+        if (hitTimer <= 0f)
+        {
+            currentTarget.Interact();
+            hitTimer = hitInterval;
+        }
+    }
+
+    if (Input.GetKeyUp(KeyCode.E))
+    {
+        playerMovement.SetLocked(false);
+        animator.SetBool("isChopping", false);
+        hitTimer = 0f;
+    }
+
+    if (currentTarget == null && Input.GetKey(KeyCode.E))
+    {
+        playerMovement.SetLocked(false);
+        animator.SetBool("isChopping", false);
+    }
+}
 
     void OnDrawGizmosSelected()
     {
