@@ -34,26 +34,25 @@ public class InventoryUI : MonoBehaviour
     }
 
     void InicializarSlots()
+{
+    foreach (var item in itemsDefinidos)
     {
-        foreach (var item in itemsDefinidos)
+        Transform grid = item.esArma ? gridArmas : gridObjetos;
+        GameObject slotGO = Instantiate(slotPrefab, grid);
+
+        SlotUI slot = new SlotUI
         {
-            Transform grid = item.esArma ? gridArmas : gridObjetos;
-            GameObject slotGO = Instantiate(slotPrefab, grid);
+            icon = slotGO.GetComponentInChildren<Image>(),
+            amountText = slotGO.GetComponentInChildren<TextMeshProUGUI>(),
+            itemName = item.nombre
+        };
 
-            SlotUI slot = new SlotUI
-            {
-                icon = slotGO.transform.Find("ItemIcon").GetComponent<Image>(),
-                amountText = slotGO.transform.Find("AmountText").GetComponent<TextMeshProUGUI>(),
-                itemName = item.nombre
-            };
-
-            slot.icon.sprite = item.icono;
-            slot.icon.color = new Color(1, 1, 1, 0.2f); // transparente si no hay
-            slot.amountText.text = "";
-
-            slots[item.nombre] = slot;
-        }
+        slot.icon.sprite = item.icono;
+        slot.icon.color = new Color(1, 1, 1, 0.2f);
+        slot.amountText.text = "";
+        slots[item.nombre] = slot;
     }
+}
 
     public void RefrescarUI()
     {
@@ -69,7 +68,7 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                slot.icon.color = new Color(1, 1, 1, 0.2f);
+                slot.icon.color = new Color(1, 1, 1, 0f);
                 slot.amountText.text = "";
             }
         }

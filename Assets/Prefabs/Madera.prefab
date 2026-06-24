@@ -157,5 +157,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625ef1d84a6ffd043a3d2ae54002472f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemName: Wood
+  itemName: Madera
   amount: 1
