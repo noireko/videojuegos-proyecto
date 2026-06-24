@@ -23,8 +23,7 @@ public class MainMenu : MonoBehaviour
 
     public void Opciones()
     {
-        if (opcionesPanel != null)
-            opcionesPanel.SetActive(true);
+        // Por implementar
     }
 
     public void CerrarOpciones()
