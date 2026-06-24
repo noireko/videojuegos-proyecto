@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        
+
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("isAiming", isAiming);
 
-        
+
 
         if (isAiming)
         {
@@ -152,24 +152,24 @@ public class PlayerMovement : MonoBehaviour
 
         int aimX = 0, aimY = 0;
 
-        if      (angle >= -22.5f  && angle <   22.5f) { aimX =  1; aimY =  0; }
-        else if (angle >=  22.5f  && angle <   67.5f) { aimX =  1; aimY =  1; }
-        else if (angle >=  67.5f  && angle <  112.5f) { aimX =  0; aimY =  1; }
-        else if (angle >= 112.5f  && angle <  157.5f) { aimX = -1; aimY =  1; }
-        else if (angle >=  157.5f || angle  < -157.5f) { aimX = -1; aimY =  0; }
+        if (angle >= -22.5f && angle < 22.5f) { aimX = 1; aimY = 0; }
+        else if (angle >= 22.5f && angle < 67.5f) { aimX = 1; aimY = 1; }
+        else if (angle >= 67.5f && angle < 112.5f) { aimX = 0; aimY = 1; }
+        else if (angle >= 112.5f && angle < 157.5f) { aimX = -1; aimY = 1; }
+        else if (angle >= 157.5f || angle < -157.5f) { aimX = -1; aimY = 0; }
         else if (angle >= -157.5f && angle < -112.5f) { aimX = -1; aimY = -1; }
-        else if (angle >= -112.5f && angle <  -67.5f) { aimX =  0; aimY = -1; }
-        else if (angle >=  -67.5f && angle <  -22.5f) { aimX =  1; aimY = -1; }
+        else if (angle >= -112.5f && angle < -67.5f) { aimX = 0; aimY = -1; }
+        else if (angle >= -67.5f && angle < -22.5f) { aimX = 1; aimY = -1; }
 
         // Guard: usa lastAimX/Y separados del movimiento
         if (aimX == lastAimX && aimY == lastAimY)
-{
-    
-    return;
-}
+        {
 
-animator.SetFloat("aimX", (float)aimX);
-animator.SetFloat("aimY", (float)aimY);
+            return;
+        }
+
+        animator.SetFloat("aimX", (float)aimX);
+        animator.SetFloat("aimY", (float)aimY);
 
         lastAimX = aimX;
         lastAimY = aimY;
