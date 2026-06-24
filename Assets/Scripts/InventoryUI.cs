@@ -53,7 +53,7 @@ public class InventoryUI : MonoBehaviour
             };
 
             slot.icon.sprite = item.icono;
-            slot.icon.color = new Color(1, 1, 1, 0.2f);
+            slot.icon.color = new Color(1, 1, 1, 0f);
             slot.amountText.text = "";
             slots[item.nombre] = slot;
         }
@@ -75,7 +75,7 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                slot.icon.color = new Color(1, 1, 1, 0.2f);
+                slot.icon.color = new Color(1, 1, 1, 0f);
                 slot.amountText.text = "";
             }
         }
