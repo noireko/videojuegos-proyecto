@@ -34,25 +34,30 @@ public class InventoryUI : MonoBehaviour
     }
 
     void InicializarSlots()
-{
-    foreach (var item in itemsDefinidos)
     {
-        Transform grid = item.esArma ? gridArmas : gridObjetos;
-        GameObject slotGO = Instantiate(slotPrefab, grid);
-
-        SlotUI slot = new SlotUI
+        foreach (var item in itemsDefinidos)
         {
-            icon = slotGO.GetComponentInChildren<Image>(),
-            amountText = slotGO.GetComponentInChildren<TextMeshProUGUI>(),
-            itemName = item.nombre
-        };
+            Transform grid = item.esArma ? gridArmas : gridObjetos;
+            GameObject slotGO = Instantiate(slotPrefab, grid);
 
-        slot.icon.sprite = item.icono;
-        slot.icon.color = new Color(1, 1, 1, 0.2f);
-        slot.amountText.text = "";
-        slots[item.nombre] = slot;
+            // Forzar escala 1 en todos los hijos
+            foreach (Transform child in slotGO.GetComponentsInChildren<Transform>())
+                if (child.GetComponent<Canvas>() != null)
+                    child.localScale = Vector3.one;
+
+            SlotUI slot = new SlotUI
+            {
+                icon = slotGO.GetComponentInChildren<Image>(),
+                amountText = slotGO.GetComponentInChildren<TextMeshProUGUI>(),
+                itemName = item.nombre
+            };
+
+            slot.icon.sprite = item.icono;
+            slot.icon.color = new Color(1, 1, 1, 0.2f);
+            slot.amountText.text = "";
+            slots[item.nombre] = slot;
+        }
     }
-}
 
     public void RefrescarUI()
     {
@@ -61,6 +66,8 @@ public class InventoryUI : MonoBehaviour
             int cantidad = Inventory.instance.GetItemAmount(kvp.Key);
             SlotUI slot = kvp.Value;
 
+            Debug.Log($"Refrescando {kvp.Key}: cantidad={cantidad}, amountText null={slot.amountText == null}");
+
             if (cantidad > 0)
             {
                 slot.icon.color = Color.white;
@@ -68,7 +75,7 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                slot.icon.color = new Color(1, 1, 1, 0f);
+                slot.icon.color = new Color(1, 1, 1, 0.2f);
                 slot.amountText.text = "";
             }
         }

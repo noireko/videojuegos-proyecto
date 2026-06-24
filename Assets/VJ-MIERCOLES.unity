@@ -903,7 +903,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -944,7 +944,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 1490713450}
   gridObjetos: {fileID: 1882634735}
   gridArmas: {fileID: 1325889342}
-  slotPrefab: {fileID: 3209617208630514520, guid: d9b1ac4ac9bad204e8b612b10ccddeae, type: 3}
+  slotPrefab: {fileID: 4181037478090745798, guid: 6dfa986b1832c104398a934e34f520db, type: 3}
   itemsDefinidos:
   - nombre: Madera
     icono: {fileID: -119338902171225973, guid: f529c80ffcdad154280d453fab60f67d, type: 3}
