@@ -1036,6 +1036,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3304586950852999130, guid: aa514c7629410d343b19188ce6e1a51c, type: 3}
+      propertyPath: itemsDefinidos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304586950852999130, guid: aa514c7629410d343b19188ce6e1a51c, type: 3}
+      propertyPath: itemsDefinidos.Array.data[1].icono
+      value: 
+      objectReference: {fileID: -119338902171225973, guid: f529c80ffcdad154280d453fab60f67d, type: 3}
+    - target: {fileID: 3304586950852999130, guid: aa514c7629410d343b19188ce6e1a51c, type: 3}
+      propertyPath: itemsDefinidos.Array.data[1].esArma
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304586950852999130, guid: aa514c7629410d343b19188ce6e1a51c, type: 3}
+      propertyPath: itemsDefinidos.Array.data[1].nombre
+      value: Pistola
+      objectReference: {fileID: 0}
     - target: {fileID: 6530442711195569272, guid: aa514c7629410d343b19188ce6e1a51c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -13989,7 +14005,8 @@ GameObject:
   - component: {fileID: 1744088692}
   - component: {fileID: 1744088691}
   - component: {fileID: 1744088690}
-  m_Layer: 0
+  - component: {fileID: 1744088694}
+  m_Layer: 3
   m_Name: Auto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14155,6 +14172,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1218307050}
   m_LocalEulerAnglesHint: {x: 0, y: 179.675, z: 0}
+--- !u!114 &1744088694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744088689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252c130a3683bcc46bcca4f3ebd7c915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunPickup
 --- !u!1 &1753512624
 GameObject:
   m_ObjectHideFlags: 0

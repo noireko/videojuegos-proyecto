@@ -26,8 +26,12 @@ public class PlayerGun : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private bool hasGun = false;
+
     void Update()
     {
+        if (!hasGun) return; // si no tiene arma, no hace nada
+
         ActualizarFirePoint();
 
         bool isAiming = animator.GetBool("isWeaponReady");
@@ -43,14 +47,14 @@ public class PlayerGun : MonoBehaviour
         int aimX = Mathf.RoundToInt(animator.GetFloat("aimX"));
         int aimY = Mathf.RoundToInt(animator.GetFloat("aimY"));
 
-        if      (aimX ==  1 && aimY ==  0) currentFirePoint = fp_Right;
-        else if (aimX ==  1 && aimY ==  1) currentFirePoint = fp_UpRight;
-        else if (aimX ==  0 && aimY ==  1) currentFirePoint = fp_Up;
-        else if (aimX == -1 && aimY ==  1) currentFirePoint = fp_UpLeft;
-        else if (aimX == -1 && aimY ==  0) currentFirePoint = fp_Left;
+        if (aimX == 1 && aimY == 0) currentFirePoint = fp_Right;
+        else if (aimX == 1 && aimY == 1) currentFirePoint = fp_UpRight;
+        else if (aimX == 0 && aimY == 1) currentFirePoint = fp_Up;
+        else if (aimX == -1 && aimY == 1) currentFirePoint = fp_UpLeft;
+        else if (aimX == -1 && aimY == 0) currentFirePoint = fp_Left;
         else if (aimX == -1 && aimY == -1) currentFirePoint = fp_DownLeft;
-        else if (aimX ==  0 && aimY == -1) currentFirePoint = fp_Down;
-        else if (aimX ==  1 && aimY == -1) currentFirePoint = fp_DownRight;
+        else if (aimX == 0 && aimY == -1) currentFirePoint = fp_Down;
+        else if (aimX == 1 && aimY == -1) currentFirePoint = fp_DownRight;
     }
 
     void Disparar()
@@ -62,5 +66,16 @@ public class PlayerGun : MonoBehaviour
 
         GameObject bala = Instantiate(bulletPrefab, currentFirePoint.position, Quaternion.identity);
         bala.GetComponent<Bullet>().SetDirection(direccion);
+    }
+
+    public void PickupGun()
+    {
+        hasGun = true;
+        Inventory.instance.AddItem("Pistola", 1);
+        Debug.Log("Pistola recogida");
+
+        PlayerMovement movement = GetComponent<PlayerMovement>();
+        if (movement != null)
+            movement.EnableGun();
     }
 }

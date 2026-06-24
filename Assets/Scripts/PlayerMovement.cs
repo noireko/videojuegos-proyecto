@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
 
+    private bool hasGun = false;
+
     private int lastX = 0;
     private int lastY = -1;
 
@@ -22,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     private float idleTimer = 0f;
     private bool isLocked = false;
+
+    public void EnableGun()
+    {
+        hasGun = true;
+    }
 
     void Start()
     {
@@ -61,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (isLocked)
             return;
 
-        bool isAiming = Input.GetMouseButton(1);
+        bool isAiming = hasGun && Input.GetMouseButton(1);
         bool wasAiming = animator.GetBool("isAiming");
 
         animator.SetBool("isAiming", isAiming);
