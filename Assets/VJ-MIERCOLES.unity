@@ -20327,6 +20327,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHP: 100
   healthBar: {fileID: 1883985612}
+  perdidaVidaPorSegundo: 2
+  vialPrefab: {fileID: 6050372877970716279, guid: ff3cc6d6de91d4fb8b2a3c17b4475e7e, type: 3}
+  umbralVidaBaja: 0.3
+  maxViales: 3
+  cooldownEntreViales: 15
+  spriteRenderer: {fileID: 0}
+  colorRegeneracion: {r: 0.4509804, g: 0.7137255, b: 0.17254902, a: 1}
+  velocidadGlow: 4
+  intensidadGlow: 0.7
+  contenedorUIVida: {fileID: 0}
+  velocidadLatido: 6
+  escalaMaximaLatido: 1.15
 --- !u!1 &2037852201
 GameObject:
   m_ObjectHideFlags: 0

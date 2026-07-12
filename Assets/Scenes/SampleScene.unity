@@ -469,7 +469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e58aa661d22f6a4ebce39a7219ba66c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement2D
-  speed: 5
+  interactRadius: 1.5
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  hitInterval: 0.5
+  interactIconPrefab: {fileID: 0}
 --- !u!61 &1085672350
 BoxCollider2D:
   m_ObjectHideFlags: 0
