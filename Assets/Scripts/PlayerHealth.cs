@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Slider healthBar;
 
     [Header("Desgaste de Vida (lineal en el tiempo)")]
-    [SerializeField] private float perdidaVidaPorSegundo = 2f;
+    [SerializeField] private float perdidaVidaPorSegundo = 1.11f; // 100 HP / 90 segundos = 1min30 de vida total
 
     [Header("Reserva de Emergencia")]
     [SerializeField] private GameObject vialPrefab;
@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
     private float ultimoSpawnTime = -999f;
     private float acumuladorDesgaste = 0f;
     private Color colorOriginalJohn = Color.white;
+    private bool enZonaPurificada = false;
 
     void Start()
     {
@@ -43,12 +44,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        acumuladorDesgaste += perdidaVidaPorSegundo * Time.deltaTime;
-        if (acumuladorDesgaste >= 1f)
+        if (!enZonaPurificada)
         {
-            int danoEntero = Mathf.FloorToInt(acumuladorDesgaste);
-            acumuladorDesgaste -= danoEntero;
-            TakeDamage(danoEntero);
+            acumuladorDesgaste += perdidaVidaPorSegundo * Time.deltaTime;
+            if (acumuladorDesgaste >= 1f)
+            {
+                int danoEntero = Mathf.FloorToInt(acumuladorDesgaste);
+                acumuladorDesgaste -= danoEntero;
+                TakeDamage(danoEntero);
+            }
         }
     }
 
@@ -132,6 +136,12 @@ public class PlayerHealth : MonoBehaviour
         ultimoSpawnTime = Time.time;
 
         Debug.Log($"Vial de emergencia generado ({vialesGenerados}/{maxViales})");
+    }
+
+    // ---------- Zona del Purificador Parcial ----------
+    public void SetEnZonaPurificada(bool valor)
+    {
+        enZonaPurificada = valor;
     }
 
     // ---------- Muerte / respawn ----------
