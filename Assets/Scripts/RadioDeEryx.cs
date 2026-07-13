@@ -8,15 +8,17 @@ public class RadioDeEryx : MonoBehaviour, IInteractable
     [Header("Cinemática")]
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject videoPanelUI;
+    [SerializeField] private CanvasGroup videoPanelCanvasGroup;
 
     [Header("Sprites de daño")]
     [SerializeField] private Sprite[] damageSprites;
 
     [Header("Drop")]
     [SerializeField] private GameObject componentePrefab;
+    [SerializeField] private Vector3 dropOffset = new Vector3(0.2f, -0.3f, 0f);
 
     [Header("Timing")]
-    [SerializeField] private float delayAntesDeDestruir = 0.2f; // 
+    [SerializeField] private float delayAntesDeDestruir = 0.4f;
 
     private int currentHP = 3;
     private bool cinematicaYaVista = false;
@@ -37,7 +39,7 @@ public class RadioDeEryx : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (isDestruyendo) return; // 
+        if (isDestruyendo) return;
 
         if (!cinematicaYaVista)
         {
@@ -57,18 +59,34 @@ public class RadioDeEryx : MonoBehaviour, IInteractable
 
     private void PlayCinematica()
     {
-        if (videoPanelUI != null)
-            videoPanelUI.SetActive(true);
-
         if (videoPlayer != null)
         {
-            videoPlayer.Play();
-            videoPlayer.loopPointReached += OnCinematicaTerminada;
+            if (videoPanelUI != null)
+                videoPanelUI.SetActive(true);
+
+            if (videoPanelCanvasGroup != null)
+                videoPanelCanvasGroup.alpha = 0f;
+
+            videoPlayer.prepareCompleted += OnVideoPreparado;
+            videoPlayer.Prepare();
         }
         else
         {
+            if (videoPanelUI != null)
+                videoPanelUI.SetActive(true);
             OnCinematicaTerminada(null);
         }
+    }
+
+    private void OnVideoPreparado(VideoPlayer vp)
+    {
+        vp.prepareCompleted -= OnVideoPreparado;
+
+        if (videoPanelCanvasGroup != null)
+            videoPanelCanvasGroup.alpha = 1f;
+
+        videoPlayer.Play();
+        videoPlayer.loopPointReached += OnCinematicaTerminada;
     }
 
     private void OnCinematicaTerminada(VideoPlayer vp)
@@ -100,8 +118,7 @@ public class RadioDeEryx : MonoBehaviour, IInteractable
     {
         if (componentePrefab != null)
         {
-            Vector3 offset = new Vector3(0.2f, -0.3f, 0f);
-            Instantiate(componentePrefab, transform.position + offset, Quaternion.identity);
+            Instantiate(componentePrefab, transform.position + dropOffset, Quaternion.identity);
         }
         Destroy(gameObject);
     }

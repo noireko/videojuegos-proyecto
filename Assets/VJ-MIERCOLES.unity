@@ -8213,9 +8213,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1747233796}
     - target: {fileID: 1880846100274205673, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
+      propertyPath: dropOffset.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880846100274205673, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
+      propertyPath: dropOffset.y
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880846100274205673, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
       propertyPath: videoPanelUI
       value: 
       objectReference: {fileID: 1747233795}
+    - target: {fileID: 1880846100274205673, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
+      propertyPath: videoPanelCanvasGroup
+      value: 
+      objectReference: {fileID: 1747233801}
+    - target: {fileID: 1880846100274205673, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
+      propertyPath: 'damageSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 21bc44521fcac45c2854004b526a61c4, type: 3}
+    - target: {fileID: 1880846100274205673, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
+      propertyPath: 'damageSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 4ebae1c86e9f0485eb65a4682faa4f15, type: 3}
     - target: {fileID: 4087524524692311487, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.03
@@ -8272,6 +8292,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4629614339441519312, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ab6e16ce89a404c0d9f1cd8975f0ac67, type: 3}
     - target: {fileID: 4629614339441519312, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -15806,18 +15830,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 112985038973781444, guid: e65e247445f3945329d8fba4aaac03e8, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 8400000, guid: f40364308affa443e9183f06538c9ed7, type: 2}
-    - target: {fileID: 1689483276050186099, guid: e65e247445f3945329d8fba4aaac03e8, type: 3}
-      propertyPath: m_RenderMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1689483276050186099, guid: e65e247445f3945329d8fba4aaac03e8, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: f40364308affa443e9183f06538c9ed7, type: 2}
     - target: {fileID: 3307130247420661182, guid: e65e247445f3945329d8fba4aaac03e8, type: 3}
       propertyPath: m_Name
       value: VideoPanelUI
@@ -15905,7 +15917,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3307130247420661182, guid: e65e247445f3945329d8fba4aaac03e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1747233801}
   m_SourcePrefab: {fileID: 100100000, guid: e65e247445f3945329d8fba4aaac03e8, type: 3}
 --- !u!1 &1747233795 stripped
 GameObject:
@@ -15917,6 +15932,18 @@ VideoPlayer:
   m_CorrespondingSourceObject: {fileID: 1689483276050186099, guid: e65e247445f3945329d8fba4aaac03e8, type: 3}
   m_PrefabInstance: {fileID: 1747233794}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1747233801
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747233795}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1753512624
 GameObject:
   m_ObjectHideFlags: 0
