@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 681d78489b8e142cf9d70306109b41da
+guid: 4e323d172686c4612b829d898e38c5a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5887007416816392247
-    second: Componente_v2_0
+      213: -775220682605067230
+    second: Inventario_Barra Inventario_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Componente_v2_0
+      name: Inventario_Barra Inventario_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1236
-        height: 1605
+        width: 4543
+        height: 817
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7385e6d0e0ad2b150800000000000000
-      internalID: 5887007416816392247
+      spriteID: 2240ace75ecdd35f0800000000000000
+      internalID: -775220682605067230
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Componente_v2_0: 5887007416816392247
+      Inventario_Barra Inventario_0: -775220682605067230
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
