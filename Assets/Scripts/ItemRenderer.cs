@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class YSort : MonoBehaviour
 {
+    [SerializeField] private Transform pivotSuelo;
     private SpriteRenderer spriteRenderer;
 
     void Awake()
@@ -11,6 +12,7 @@ public class YSort : MonoBehaviour
 
     void LateUpdate()
     {
-        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        float y = pivotSuelo != null ? pivotSuelo.position.y : transform.position.y;
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(y * -100);
     }
 }
