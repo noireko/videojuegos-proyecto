@@ -1208,7 +1208,7 @@ MonoBehaviour:
   botonVerde: {fileID: 4084494786888189514, guid: 47b11c767c1a1a04d98566821641ea77, type: 3}
   botonGris: {fileID: 6680557288505655536, guid: fc39b69577a3b8746a940f2be16aed83, type: 3}
   itemName: Madera
-  amount: 7
+  amount: 1
 --- !u!1 &66225603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2228883177417827714, guid: aa514c7629410d343b19188ce6e1a51c, type: 3}
       propertyPath: amount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2243416481072929011, guid: aa514c7629410d343b19188ce6e1a51c, type: 3}
       propertyPath: m_Sprite
@@ -5047,6 +5047,120 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1734698120}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &391506872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391506875}
+  - component: {fileID: 391506874}
+  - component: {fileID: 391506873}
+  m_Layer: 0
+  m_Name: dwasd_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &391506873
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391506872}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f0a5888ac55632458dcf5d2e7ef0807, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &391506874
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391506872}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7957500019309938284, guid: 0fe676b99cf46d749802b6496977b899, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.13000001, y: 0.63004565}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &391506875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391506872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51607925, y: -13.050373, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &435144570 stripped
 GameObject:
@@ -11402,80 +11516,24 @@ MonoBehaviour:
     costs:
     - itemName: Madera
       amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
   - buildName: Pared_1
     buildPrefab: {fileID: 8712754385008108829, guid: 0c51649e27b35034aa5274343e9ce48f, type: 3}
     costs:
     - itemName: Madera
       amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
   - buildName: Pared_2
-    buildPrefab: {fileID: 1264279280294876938, guid: 808a83a113901f542a0858b6e5dfb3e9, type: 3}
+    buildPrefab: {fileID: 2258560498970439672, guid: c5bde10812d5cfc4c8e4bafed02d9705, type: 3}
     costs:
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
     - itemName: Madera
       amount: 5
   - buildName: Pared_3
-    buildPrefab: {fileID: 6929240694056464354, guid: 2a0395675aabbe044a3467e75aa83070, type: 3}
+    buildPrefab: {fileID: 2328810830728369872, guid: c2e5cad9fc9fca24fa549244549154d8, type: 3}
     costs:
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
     - itemName: Madera
       amount: 5
   - buildName: Pared_4
     buildPrefab: {fileID: 8685311140005733009, guid: 3c2806047668b20468160b1d25a208f8, type: 3}
     costs:
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
-    - itemName: Madera
-      amount: 5
     - itemName: Madera
       amount: 5
   gridSize: 1
@@ -13908,7 +13966,7 @@ MonoBehaviour:
   botonVerde: {fileID: 4084494786888189514, guid: 47b11c767c1a1a04d98566821641ea77, type: 3}
   botonGris: {fileID: 6680557288505655536, guid: fc39b69577a3b8746a940f2be16aed83, type: 3}
   itemName: Madera
-  amount: 7
+  amount: 1
 --- !u!1 &1326207020
 GameObject:
   m_ObjectHideFlags: 0
@@ -16480,7 +16538,7 @@ MonoBehaviour:
   botonVerde: {fileID: 4084494786888189514, guid: 47b11c767c1a1a04d98566821641ea77, type: 3}
   botonGris: {fileID: 6680557288505655536, guid: fc39b69577a3b8746a940f2be16aed83, type: 3}
   itemName: Madera
-  amount: 7
+  amount: 1
 --- !u!1 &1540087027
 GameObject:
   m_ObjectHideFlags: 0
@@ -17654,6 +17712,120 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1734698120}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1608691922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608691925}
+  - component: {fileID: 1608691924}
+  - component: {fileID: 1608691923}
+  m_Layer: 0
+  m_Name: dwasd_0 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &1608691923
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608691922}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af7c96d5cc9dac248af02979782bd4aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1608691924
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608691922}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7957500019309938284, guid: 0fe676b99cf46d749802b6496977b899, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.13000001, y: 0.63004565}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &1608691925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608691922}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.37212586, y: -15.298437, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1610351848
 GameObject:
@@ -22401,7 +22573,7 @@ MonoBehaviour:
   botonVerde: {fileID: 4084494786888189514, guid: 47b11c767c1a1a04d98566821641ea77, type: 3}
   botonGris: {fileID: 6680557288505655536, guid: fc39b69577a3b8746a940f2be16aed83, type: 3}
   itemName: Madera
-  amount: 7
+  amount: 1
 --- !u!1 &1915603843
 GameObject:
   m_ObjectHideFlags: 0
@@ -24747,7 +24919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHP: 100
   healthBar: {fileID: 1883985612}
-  perdidaVidaPorSegundo: 2
+  perdidaVidaPorSegundo: 0
   vialPrefab: {fileID: 6050372877970716279, guid: ff3cc6d6de91d4fb8b2a3c17b4475e7e, type: 3}
   umbralVidaBaja: 0.3
   maxViales: 3
@@ -26573,3 +26745,5 @@ SceneRoots:
   - {fileID: 579757671}
   - {fileID: 573808610}
   - {fileID: 89109507}
+  - {fileID: 391506875}
+  - {fileID: 1608691925}
