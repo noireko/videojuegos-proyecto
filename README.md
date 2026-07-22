@@ -56,6 +56,39 @@ Degiorgis Camila · Fernandez Rolón Agustín · Migueles Mariana · Prepelitchi
 
 ## Aportes individuales — Examen Final
 
+### Fernandez Rolón Agustín — Mecánica de Construcción
+
+**Descripción:** Extensión del sistema de construcción existente (que solo soportaba la cama como punto de respawn) hacia un sistema completo con múltiples estructuras, verificación de materiales, preview de colocación con feedback visual y descuento automático de inventario.
+
+**Scripts creados:**
+- `BuildManager.cs` — script principal. Gestiona el preview transparente del objeto (overlay verde/rojo según `CanBuild`), verifica disponibilidad de materiales en `Inventory.cs` (`HasRequiredMaterials`), instancia la estructura y descuenta materiales (`TryBuild`). Cancelación con click derecho o Escape.
+- `BuildingSlotUI.cs` — controla cada slot del panel de construcción. Actualiza color de texto y sprite del botón (verde/gris) según si el jugador tiene los materiales requeridos.
+
+**Variables configurables en Inspector (`BuildManager`):**
+
+| Variable | Descripción |
+|---|---|
+| `Build Items` | Lista de estructuras disponibles |
+| `Grid Size` | Tamaño de la grilla de snapping |
+| `Blocked Layer` | Layer que bloquea la colocación |
+| `Check Size` | Área de verificación de colisión |
+
+**Estructuras implementadas:**
+
+| Estructura | Material | Cantidad |
+|---|---|---|
+| Cama (respawn) | Madera | 5 |
+| Pared Horizontal | Madera | 7 |
+| Pared Vertical | Madera | 7 |
+| Pared Diagonal A | Madera | 7 |
+| Pared Diagonal B | Madera | 7 |
+
+**Flujo de uso:** `X` abre panel → selección de estructura → overlay sigue al mouse → click izquierdo para colocar / click derecho o Escape para cancelar.
+
+**Dependencias:** `Inventory.cs` (verificación y descuento de materiales), prefabs de estructuras con `SpriteRenderer` + `Collider2D`, layer `Interactable` en estructuras interactuables.
+
+**Assets generados:** sprites de paredes de madera en perspectiva isométrica (4 orientaciones).
+
 ---
 
 ### Migueles Mariana — Sistema de Narrativa Ambiental: Radio de Eryx
@@ -119,41 +152,6 @@ Assets/Resources/RadioTexture.renderTexture
 - `CicloDiaNocheUI.cs` — mueve el indicador sol/luna sobre la barra de UI mediante `Mathf.Lerp` según `ValorCiclo`. Separado del script de lógica para respetar separación de responsabilidades.
 
 **Assets generados:** barra de fondo (degradé sol/luna), sprite del indicador deslizante.
-
----
-
-### Fernandez Rolón Agustín — Mecánica de Construcción
-
-**Descripción:** Extensión del sistema de construcción existente (que solo soportaba la cama como punto de respawn) hacia un sistema completo con múltiples estructuras, verificación de materiales, preview de colocación con feedback visual y descuento automático de inventario.
-
-**Scripts creados:**
-- `BuildManager.cs` — script principal. Gestiona el preview transparente del objeto (overlay verde/rojo según `CanBuild`), verifica disponibilidad de materiales en `Inventory.cs` (`HasRequiredMaterials`), instancia la estructura y descuenta materiales (`TryBuild`). Cancelación con click derecho o Escape.
-- `BuildingSlotUI.cs` — controla cada slot del panel de construcción. Actualiza color de texto y sprite del botón (verde/gris) según si el jugador tiene los materiales requeridos.
-
-**Variables configurables en Inspector (`BuildManager`):**
-
-| Variable | Descripción |
-|---|---|
-| `Build Items` | Lista de estructuras disponibles |
-| `Grid Size` | Tamaño de la grilla de snapping |
-| `Blocked Layer` | Layer que bloquea la colocación |
-| `Check Size` | Área de verificación de colisión |
-
-**Estructuras implementadas:**
-
-| Estructura | Material | Cantidad |
-|---|---|---|
-| Cama (respawn) | Madera | 5 |
-| Pared Horizontal | Madera | 7 |
-| Pared Vertical | Madera | 7 |
-| Pared Diagonal A | Madera | 7 |
-| Pared Diagonal B | Madera | 7 |
-
-**Flujo de uso:** `X` abre panel → selección de estructura → overlay sigue al mouse → click izquierdo para colocar / click derecho o Escape para cancelar.
-
-**Dependencias:** `Inventory.cs` (verificación y descuento de materiales), prefabs de estructuras con `SpriteRenderer` + `Collider2D`, layer `Interactable` en estructuras interactuables.
-
-**Assets generados:** sprites de paredes de madera en perspectiva isométrica (4 orientaciones).
 
 ---
 
