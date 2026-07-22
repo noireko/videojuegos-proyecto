@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CinematicaManager
   videoPlayer: {fileID: 303551507}
   videos:
-  - {fileID: 32900000, guid: 67e3720944d64f74ab5191311558e0ae, type: 3}
+  - {fileID: 32900000, guid: 44f30249352c3334d94fe94a1a6f3db1, type: 3}
   - {fileID: 32900000, guid: 2fa03de482194c144846d1813eca36ba, type: 3}
   escenaJuego: 2
 --- !u!4 &525567654

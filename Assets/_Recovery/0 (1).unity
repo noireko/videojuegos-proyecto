@@ -10582,7 +10582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8311201134372306117, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8311201134372306117, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
       propertyPath: m_Offset.x
@@ -10591,10 +10591,6 @@ PrefabInstance:
     - target: {fileID: 8311201134372306117, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
       propertyPath: m_Offset.y
       value: -1.3813
-      objectReference: {fileID: 0}
-    - target: {fileID: 8311201134372306117, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 256247234102362862, guid: 56a1f80b5fab84b749d08f45b3c94413, type: 3}
