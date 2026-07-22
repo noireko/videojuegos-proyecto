@@ -48,13 +48,15 @@ Degiorgis Camila · Fernandez Rolón Agustín · Migueles Mariana · Prepelitchi
 
 | Escena | Descripción |
 |---|---|
+| `VJ-MIERCOLES` | Escena principal de gameplay — Sector 1: La Periferia |
 | `Main-Menu` | Menú principal con opciones Nueva Partida / Continuar / Opciones / Salir |
 | `Cinematica` | Cinemática de introducción al Sector 1 |
-| `VJ-MIERCOLES` | Escena de gameplay — Sector 1: La Periferia |
 
 ---
 
 ## Aportes individuales — Examen Final
+
+---
 
 ### Degiorgis Camila — Sistema de Oxígeno + Game Over por Asfixia
 
@@ -122,6 +124,8 @@ Degiorgis Camila · Fernandez Rolón Agustín · Migueles Mariana · Prepelitchi
 ---
 
 ### Migueles Mariana — Sistema de Narrativa Ambiental: Radio de Eryx
+
+
 
 **Descripción:** Objeto interactuable que encadena tres sistemas: activación narrativa mediante cinemática, destrucción progresiva en 3 estados y drop de recursos al romperse.
 
@@ -194,8 +198,22 @@ Assets/Resources/RadioTexture.renderTexture
 | Universal Render Pipeline (URP) | Pipeline de renderizado, `Global Light 2D` |
 | GitHub Desktop | Control de versiones |
 | NanoBanana (Gemini) | Generación de assets con IA |
+| Claude (Anthropic) | Asistencia en desarrollo de código (scripts de Unity) |
 | CapCut | Edición de cinemáticas |
 | Adobe Illustrator / Photoshop | Diseño de interfaz y assets |
+
+---
+
+## Cómo abrir el proyecto
+
+```bash
+git clone https://github.com/noireko/videojuegos-proyecto.git
+```
+
+1. Instalá **Unity 6000.3.6f1 LTS** desde Unity Hub
+2. Abrí la carpeta clonada desde Unity Hub → *Open project from disk*
+3. La carpeta `Library/` se regenera automáticamente en la primera apertura (excluida por `.gitignore`)
+4. Escena de entrada: `Assets/VJ-MIERCOLES.unity`
 
 ---
 
