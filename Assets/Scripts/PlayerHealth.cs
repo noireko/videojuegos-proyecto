@@ -16,6 +16,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxViales = 3;
     [SerializeField] private float cooldownEntreViales = 15f;
 
+    // [Camila - Sistema O2]
+    [Header("Sistema de Oxígeno")]
+    [SerializeField] private OxygenSystem oxygenSystem;
+    [SerializeField] private float oxigenoPerdidoPorDano = 0.5f; // O2 perdido por cada punto de daño
+
     [Header("Efectos Visuales - Resplandor de John")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color colorRegeneracion = new Color(0.4f, 1f, 0.4f);
@@ -40,6 +45,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (spriteRenderer != null)
             colorOriginalJohn = spriteRenderer.color;
+
+        // [Camila - Sistema O2]
+        if (oxygenSystem == null)
+            oxygenSystem = GetComponent<OxygenSystem>();
     }
 
     void Update()
@@ -60,6 +69,9 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHP -= amount;
         ActualizarBarra();
+
+        // [Camila - Sistema O2] recibir daño también quita oxígeno
+        oxygenSystem?.LoseOxygen(amount * oxigenoPerdidoPorDano);
 
         RevisarSiHayQueGenerarVial();
 

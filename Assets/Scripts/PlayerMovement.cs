@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     private float idleTimer = 0f;
     private bool isLocked = false;
 
+    // [Camila - Sistema O2]
+    [SerializeField] private OxygenSystem oxygenSystem;
+
     public void EnableGun()
     {
         hasGun = true;
@@ -37,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // [Camila - Sistema O2]
+        if (oxygenSystem == null)
+            oxygenSystem = GetComponent<OxygenSystem>();
 
         currentSpeed = walkSpeed;
 
@@ -83,6 +90,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
             animator.SetBool("isRunning", false);
 
+            // [Camila - Sistema O2] no corre mientras apunta
+            oxygenSystem?.SetSprinting(false);
+
             // Al empezar a apuntar, resetea el cache para forzar el primer seteo
             if (!wasAiming)
             {
@@ -120,6 +130,9 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = isRunning ? runSpeed : walkSpeed;
 
         animator.SetBool("isRunning", isRunning);
+
+        // [Camila - Sistema O2] correr acelera el consumo de oxígeno
+        oxygenSystem?.SetSprinting(isRunning);
 
         if (isMoving)
         {
