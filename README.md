@@ -56,6 +56,36 @@ Degiorgis Camila · Fernandez Rolón Agustín · Migueles Mariana · Prepelitchi
 
 ## Aportes individuales — Examen Final
 
+### Degiorgis Camila — Sistema de Oxígeno + Game Over por Asfixia
+
+#### A. Sistema de Oxígeno — Soporte vital y Cápsula de Carbón
+
+**Descripción:** Sistema de supervivencia continuo que implementa la mecánica corazón del GDD. El tanque de O₂ se consume de forma constante por frame, con un multiplicador del 20% al correr. Si llega a cero, la partida termina. Las Cápsulas de Carbón distribuidas en el escenario otorgan recarga instantánea parcial. El estado se comunica en todo momento via barra de O₂ en el HUD.
+
+**Scripts creados:**
+- `OxygenSystem.cs` — componente central. Maneja el drenaje por frame, el multiplicador de consumo al correr (`SetSprinting`), la recarga por ítems (`AddOxygen`, `RefillFull`), la pérdida por daño (`LoseOxygen`), y expone `UnityEvent` (`OnOxygenDepleted`) para que la UI y el Game Over reaccionen sin acoplarse directamente al script.
+- `CarbonCapsule.cs` — pickup de recolección con animación de flotación (`Mathf.Sin`), sonido y partículas al recolectarse.
+- `OxygenBarUI.cs` — controla la barra de O₂ del HUD (`Image` tipo Filled) con cambio de color dinámico según porcentaje restante (óptimo / advertencia / crítico), siguiendo los umbrales de percepción definidos en el GDD.
+
+**Modificaciones a scripts existentes:**
+- Script de movimiento de John: llamada a `SetSprinting(true/false)` en la detección de Shift para que correr impacte el consumo.
+- Script de vida/daño de John: llamada a `LoseOxygen()` al recibir daño, y lógica de Game Over al recibir `OnOxygenDepleted`.
+
+**Assets generados:** sprite de la Cápsula de Carbón (pixel art), diseño de la barra de O₂ del HUD.
+
+**Prefabs creados:** `CarbonCapsule_Pickup`
+
+#### B. Game Over por Asfixia
+
+**Descripción:** Sistema de fin de partida vinculado al Sistema de Oxígeno. Al agotarse el O₂, se activa un panel de Game Over, el juego se congela (`Time.timeScale = 0`) y se habilita un botón de reintentar que recarga el nivel. Cierra el ciclo de la mecánica de supervivencia que hasta el TP2 no tenía consecuencia real.
+
+**Scripts creados:**
+- `GameOverOnAsphyxia.cs` — escucha el evento `OnOxygenDepleted` de `OxygenSystem` y activa el panel de Game Over con el método `RetryLevel()`. La conexión se realizó íntegramente por `UnityEvent` desde el Inspector, sin modificar código ajeno.
+
+**Assets generados:** panel de Game Over (UI), texto del mensaje de muerte por asfixia.
+
+---
+
 ### Fernandez Rolón Agustín — Mecánica de Construcción
 
 **Descripción:** Extensión del sistema de construcción existente (que solo soportaba la cama como punto de respawn) hacia un sistema completo con múltiples estructuras, verificación de materiales, preview de colocación con feedback visual y descuento automático de inventario.
